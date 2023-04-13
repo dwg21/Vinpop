@@ -1,12 +1,5 @@
-import React from 'react';
-
-import ImageGallery from './ImageGallery';
 
 import profile from '../../data/images/profile.jpeg';
-
-
-import InfoSmallDevices from './infoSmallDevices';
-import InfoLargeDevices from './infoLargeDevices';
 
 import itempic1 from '../../data/images/itempic1.jpeg';
 import itempic2 from '../../data/images/itempic2.jpeg';
@@ -23,8 +16,10 @@ import item2pic4 from '../../data/images/product3/img4.jpeg'
 const listingData = {
     listingId: 36728,
     SellerId: 63737,
+    sellerUserTag: "EmilyJ",
     Title: 'Womens Brown Jacket',
-    Price: "135.00",
+    Price: 135.00,
+    ShippingPrice: 3.00,
     Size: "M",
     Condition: 'Used - Excellent',
     Color: 'Brown',
@@ -44,16 +39,19 @@ const listingData = {
 }
 
 
+
 const listingData2 = {
     listingId: 36727,
     SellerId: 63737,
+    sellerUserTag: "EmilyJ",
     Title: 'Mens Carhart Trousers',
-    Price: "50.00",
+    Price: 50,
+    ShippingPrice: 3.00,
     Size: "L",
     Condition: 'Used - Excellent',
     Color: 'Brown',
     ListAge: "2 Day",
-    Description:  ` UK POSTAGE - DISCOUNT ON BUNDLES
+    Description:  `UK POSTAGE - DISCOUNT ON BUNDLES
     Amazing brown distressed retro leather biker bomber zip up jacket - vintage - real leather - mens size M - shown on a size 8 who is 5”9 and fits oversized`,
     SellerName: "Emily Jones",
     Location : "Leeds, United Kingdom",
@@ -70,35 +68,8 @@ const listingData2 = {
 
 
 
-const ProductPage = () => {
-return (
-    <div className='p-7 mt-10 flex flex-col md:flex-row '>
-        <div className='mb-5 flex space-x-4 md:hidden'>
-            <div>
-                <img src ={listingData.profilePic} className='rounded-[50%] h-[50px]' />
-            </div>
-            <div>
-                <p className='font-bold'>{listingData.SellerName}</p>
-                <p className=' font-light'>{listingData.Location}</p>
-            </div>
-        </div>
 
-        <ImageGallery listingData = {listingData} />
-        
-        <div className='md:hidden'>
-            <InfoSmallDevices listingData = {listingData} />  
-        </div>
-
-        <div className='hidden md:block'>
-            <InfoLargeDevices data = {listingData}/>
-        </div>
-        
-
-
-
-    </div>
-
-)
-}
-
-export default ProductPage
+export const allListings = [
+    listingData,
+    listingData2
+]

@@ -1,27 +1,18 @@
 import {useState} from 'react';
-
-
-import itempic1 from '../../data/images/itempic1.jpeg';
-import itempic2 from '../../data/images/itempic2.jpeg';
-import itempic3 from '../../data/images/itempic3.jpeg';
-import itempic4 from '../../data/images/itempic4.jpeg';
-
-
-
-
 import {RiArrowRightCircleFill, RiArrowLeftCircleFill} from 'react-icons/ri'
 
-const productimages = [
-    itempic1,
-    itempic2,
-    itempic3,
-    itempic4,
-]
 
 
-
-const ImageGallery = () => {
-    const [imageIndex , setImageindex] = useState(0)
+const ImageGallery = ({listingData}) => {
+    const [imageIndex , setImageindex] = useState(0);
+    
+    const productimages = [
+        listingData.img1,
+        listingData.img2,
+        listingData.img3,
+        listingData.img4,
+    ]
+    
 
     const controlIndex = (direction) => {
         if (direction === 'right') {

@@ -6,7 +6,7 @@ import {IoMdShirt} from 'react-icons/io';
 import profile from '../../data/images/profile.jpeg';
 
 
-const InfoLargeDevices = () => {
+const InfoLargeDevices = (data) => {
     return (
         <div className='stylings-larger-Devices p-4'>
             <div className='ml-4'>

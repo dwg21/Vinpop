@@ -9,6 +9,7 @@ import deals from '../data/images/deals.jpeg'
 import shirts from '../data/images/shirts.jpeg'
 import dresses from '../data/images/dresses.jpeg'
 import jewellery from '../data/images/jewellery.jpeg'
+import { Link } from 'react-router-dom';
 
 
 
@@ -39,22 +40,22 @@ return (
             <div className='pb-5'>
                 <p className='font-bold mb-2'>TRENDING ON VINPOP</p>
                 <div className='grid grid-cols-2 sm:grid-cols-4 space-x-4'>
-                    <div className='pl-4'>
+                    <Link to='/browseProducts'><div className='pl-4'>
                         <img src= {deals} alt = "" />
                         <p className='font-bold text-lg text-center p-3'>Deals</p>
-                    </div>
-                    <div>
+                    </div></Link>
+                    <Link to='/browseProducts'><div>
                         <img src= {shirts} alt = '' />
                         <p className='font-bold text-lg text-center p-3'>Shirts</p>
-                    </div>
-                    <div>
+                    </div></Link>
+                    <Link to='/browseProducts'><div>
                         <img src= {dresses} alt = '' />
                         <p className='font-bold text-lg text-center p-3'>dresses</p>
-                    </div>
-                    <div>
+                    </div></Link>
+                    <Link to='/browseProducts'><div>
                         <img src= {jewellery} alt = '' />
                         <p className='font-bold text-lg text-center p-3'>Jewellery</p>
-                    </div>
+                    </div></Link>
 
                 </div>
             </div>

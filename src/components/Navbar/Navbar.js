@@ -17,7 +17,7 @@ const Navbar = () => {
     const [userLoggedin, SetuserLoggedin] = useState(true);
 
 return (
-    <div className='fixed top-0 w-full  bg-white'>
+    <div className='fixed top-0 w-full z-40  bg-white'>
         {searchMenuActive && <SearchMenu setSearchMenuActive = {setSearchMenuActive} /> }
         {hamburgerMenuActive && <Hamburger setHamburgerMenuActive = {setHamburgerMenuActive} />}
 
