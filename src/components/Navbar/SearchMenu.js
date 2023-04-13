@@ -4,7 +4,7 @@ import {AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
 
 const SearchMenu = ({setSearchMenuActive}) => {
     return (
-    <div className='w-full h-full bg-white absolute p-5 z-50'>
+    <div className='w-full bg-white fixed top-0 h-full p-5 z-50 '>
         <div className='flex justify-between'>
             <p className='font-bold text-2xl'>Search</p>
             <AiOutlineClose className='text-2xl mr-2 cursor-pointer'  onClick={() => setSearchMenuActive(false)} />

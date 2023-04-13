@@ -9,7 +9,7 @@ import {BsInstagram, BsTwitter,BsFacebook } from 'react-icons/bs';
 
 const Hamburger = ({setHamburgerMenuActive}) => {
     return (
-    <div className='w-[320px] h-full z-50 bg-white absolute  p-5 shadow-md overflow-y-auto'>
+    <div className='w-[320px] h-full z-50 bg-white fixed top-0   p-5 shadow-md overflow-y-auto'>
         <div className='flex justify-between align-middle'>
             <div className='flex space-x-3'>
                 <BsInstagram className=' text-lg' />

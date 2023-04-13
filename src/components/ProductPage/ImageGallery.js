@@ -44,7 +44,7 @@ const ImageGallery = () => {
 return (
     <div className=''>
         <div className='small-screen-gallery md:hidden'>
-            <div className=' relative'>
+            <div className='relative '>
                 <img src ={productimages[imageIndex]} />
                 <RiArrowLeftCircleFill onClick = {() => controlIndex('left')} className=' top-[50%] left-5 absolute text-3xl cursor-pointer' />
                 <RiArrowRightCircleFill onClick = {() => controlIndex('right')} className='top-[50%] right-5 absolute text-3xl cursor-pointer' />

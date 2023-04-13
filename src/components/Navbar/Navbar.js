@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import {AiOutlineSearch, AiOutlineMenu} from 'react-icons/ai'
-import SearchMenu from './SearchMenu';
 import Hamburger from './Hamburger'
+import SearchMenu from './SearchMenu';
+import ShoppingCartBadge from './ShoppingCartBadge';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -10,8 +13,11 @@ const Navbar = () => {
     const [searchMenuActive, setSearchMenuActive] = useState(false);
     const [hamburgerMenuActive, setHamburgerMenuActive] = useState(false);
 
+    //Move this to redux 
+    const [userLoggedin, SetuserLoggedin] = useState(true);
+
 return (
-    <div >
+    <div className='fixed top-0 w-full  bg-white'>
         {searchMenuActive && <SearchMenu setSearchMenuActive = {setSearchMenuActive} /> }
         {hamburgerMenuActive && <Hamburger setHamburgerMenuActive = {setHamburgerMenuActive} />}
 
@@ -19,16 +25,23 @@ return (
             <div className='flex justify-around pt-4 pb-2 align-middle'>
                 <AiOutlineMenu onClick={() => setHamburgerMenuActive(true)}  className='text-3xl  md:hidden cursor-pointer' />
 
-                <h2 className='font-extrabold text-red-500 text-2xl mr-6 '>VinPoP</h2>
+                <Link to ='/'><h2 className='font-extrabold text-red-500 text-2xl mr-6 '>VinPoP</h2></Link>
                 <div className='pl-2  border-2 justify-center items-center border-black	hidden md:flex'>
                     <AiOutlineSearch/>
                     <input type="text"  placeholder="Search for items, brands, or styles.." className="flex w-[300px] py-2 px-1.5 font-epilogue font-normal text-[14px] placeholder:text-black dark:placeholder:text-[#4b5264] text-black dark:text-white bg-transparent outline-none	" />
                 </div>
 
-                <div className='flex'>
-                    <AiOutlineSearch onClick={()=> setSearchMenuActive(true)} className = 'text-2xl mr-3 md:hidden cursor-pointer'/>
-                    <div className='mr-3 py-1 px-3.5 h-[90%] bg-black cursor-pointer'><p className='text-white font-bold'>Sign Up</p></div>
-                    <p className='p-1 font-bold cursor-pointer'>Log in</p>
+                <div className= 'flex space-x-5 justify-center content-center align-middle'>
+                    <AiOutlineSearch onClick={()=> setSearchMenuActive(true)} className = 'text-2xl md:hidden cursor-pointer'/>
+                    <Link to ='/bag'><ShoppingCartBadge cartNumber = {6} /></Link>
+                    <div className={userLoggedin ? `hidden`: `flex`}>
+                        <div className='mr-3 py-1 px-3.5 h-[90%] bg-black cursor-pointer'><p className='text-white font-bold'>Sign Up</p></div>
+                        <p className='p-1 font-bold cursor-pointer'>Log in</p>                        
+                </div>
+                    
+                        
+
+
                 </div>
             </div>
         </div>

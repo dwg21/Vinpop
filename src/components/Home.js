@@ -5,6 +5,12 @@ import bag from '../data/images/bag.jpeg';
 import homepic1 from '../data/images/findstyle.jpg';
 import homepic2 from '../data/images/homepagepic2.jpeg'
 
+import deals from '../data/images/deals.jpeg'
+import shirts from '../data/images/shirts.jpeg'
+import dresses from '../data/images/dresses.jpeg'
+import jewellery from '../data/images/jewellery.jpeg'
+
+
 
 
 const Home = () => {
@@ -34,19 +40,19 @@ return (
                 <p className='font-bold mb-2'>TRENDING ON VINPOP</p>
                 <div className='grid grid-cols-2 sm:grid-cols-4 space-x-4'>
                     <div className='pl-4'>
-                        <img src= {bag} alt = "" />
+                        <img src= {deals} alt = "" />
                         <p className='font-bold text-lg text-center p-3'>Deals</p>
                     </div>
                     <div>
-                        <img src= {bag} alt = '' />
+                        <img src= {shirts} alt = '' />
                         <p className='font-bold text-lg text-center p-3'>Shirts</p>
                     </div>
                     <div>
-                        <img src= {bag} alt = '' />
+                        <img src= {dresses} alt = '' />
                         <p className='font-bold text-lg text-center p-3'>dresses</p>
                     </div>
                     <div>
-                        <img src= {bag} alt = '' />
+                        <img src= {jewellery} alt = '' />
                         <p className='font-bold text-lg text-center p-3'>Jewellery</p>
                     </div>
 

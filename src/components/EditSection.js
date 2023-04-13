@@ -1,25 +1,34 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import bag from '../data/images/bag.jpeg'
+
+import img1 from '../data/images/itempic1.jpeg';
+import img2 from '../data/images/product1/img1.jpeg';
+import img3 from '../data/images/product2/img1.jpeg';
+import img4 from '../data/images/product3/img1.jpeg';
+import img5 from '../data/images/product4/img1.jpeg';
+import img6 from '../data/images/product5/img1.jpeg';
+import img7 from '../data/images/product6/img1.jpeg';
+
 
 
 
 //price image, id
 const EditSectionData = [
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ], 
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ], 
-    ['£14.99', '../data/images/bag.jpeg', '36728' ],
-    ['£14.99', '../data/images/bag.jpeg', '36728' ]
-
-
+    ['£14.99', img1, '36728' ],
+    ['£14.99', img2, '36728' ],
+    ['£14.99', img3 , '36728' ],
+    ['£14.99', img4, '36728' ], 
+    ['£14.99', img5, '36728' ],
+    ['£14.99', img6, '36728' ],
+    ['£14.99', img7, '36728' ],
+    ['£14.99', bag, '36728' ],
+    ['£14.99', bag, '36728' ],
+    ['£14.99', bag,  '36728' ], 
+    ['£14.99', bag,  '36728' ],
+    ['£14.99', bag,  '36728' ]
 
 
 
@@ -34,10 +43,12 @@ return (
             
         {
         EditSectionData.map((item, index) => (
-            <li className=' list-none'>
-                <img id= {index} className=' mouse-highlight cursor-pointer' src= {bag}/> 
-                <p className=' font-bold hidden sm:block'>{item[0]}</p>
-            </li>
+            <Link to = {`/listing/${item[2]}`}>
+                <li className=' list-none'>
+                    <img id= {index} className=' mouse-highlight cursor-pointer' src= {item[1]}/> 
+                    <p className=' font-bold hidden sm:block'>{item[0]}</p>
+                </li>
+            </Link>
         ))
     }   
 

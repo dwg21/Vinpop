@@ -13,7 +13,7 @@ import InfoLargeDevices from './infoLargeDevices';
 
 const ProductPage = () => {
 return (
-    <div className='p-7 flex flex-col md:flex-row '>
+    <div className='p-7 mt-10 flex flex-col md:flex-row '>
         <div className='mb-5 flex space-x-4 md:hidden'>
             <div>
                 <img src ={profile} className='rounded-[50%] h-[50px]' />
