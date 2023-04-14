@@ -9,6 +9,12 @@ const UserSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50,
   },
+
+  username: {
+    type: String,
+    required: [true, 'Please provide a user or business name']
+  },
+
   email: {
     type: String,
     unique: true,
@@ -28,6 +34,28 @@ const UserSchema = new mongoose.Schema({
     enum: ['admin', 'user'],
     default: 'user',
   },
+
+  profilePic: {
+    type: String,
+  },
+
+  SaleReviews: {
+    type: Number,
+    default: 0
+  },
+
+  NumOfSales: 
+  {
+    type: Number,
+    default: 0
+  },
+
+  location: {
+    type: String,
+    required: true
+  }
+
+
 });
 
 UserSchema.pre('save', async function () {

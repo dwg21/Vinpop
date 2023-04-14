@@ -1,4 +1,11 @@
-import { Home, Navbar, ProductPage, Cart, BrowseProducts} from "./components";
+import {
+    Home,
+    Navbar, 
+    ProductPage, 
+    Cart, 
+    BrowseProducts, 
+    Login, 
+    Register} from "./components";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -12,7 +19,9 @@ function App() {
           <Routes>
             <Route exact path ='/' element = {<Home/>} />
             <Route exact path ='/bag' element = {<Cart/>} />
-            <Route exact path = 'browseproducts' element = {<BrowseProducts />} />
+            <Route exact path = '/browseproducts' element = {<BrowseProducts />} />
+            <Route exact path = '/login' element = {<Login />} />
+            <Route exact path = '/register' element = {<Register />} />
             <Route exact path = 'listing/:id' element = {<ProductPage />} />
           </Routes>          
         </div>

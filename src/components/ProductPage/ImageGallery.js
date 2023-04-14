@@ -5,12 +5,15 @@ import {RiArrowRightCircleFill, RiArrowLeftCircleFill} from 'react-icons/ri'
 
 const ImageGallery = ({listingData}) => {
     const [imageIndex , setImageindex] = useState(0);
+
+    // const {SingleListing} = listingData
+
     
     const productimages = [
-        listingData.img1,
-        listingData.img2,
-        listingData.img3,
-        listingData.img4,
+        listingData.image1,
+        listingData.image2,
+        listingData.image3,
+        listingData.image3,
     ]
     
 
@@ -34,6 +37,9 @@ const ImageGallery = ({listingData}) => {
 
 return (
     <div className=''>
+            {/* <img src= '/images/product1/img2.jpeg' className='mouse-highlight cursor-pointer' alt='productImg' /> */}
+
+
         <div className='small-screen-gallery md:hidden'>
             <div className='relative '>
                 <img src ={productimages[imageIndex]} />
@@ -42,10 +48,10 @@ return (
             </div> 
 
             <div className='grid grid-cols-4 mt-2 gap-2'>
-                <img onClick={() =>setImageindex(0)} className='cursor-pointer' src = {productimages[0]} />
-                <img onClick={() =>setImageindex(1)} className='cursor-pointer' src = {productimages[1]} />
+                <img onClick={() =>setImageindex(0)} className='cursor-pointer' src = {productimages[0]}  />
+                <img onClick={() =>setImageindex(1)} className='cursor-pointer' src = {productimages[1]}  />
                 <img onClick={() =>setImageindex(2)} className='cursor-pointer' src = {productimages[2]} />
-                <img onClick={() =>setImageindex(3)} className='cursor-pointer' src = {productimages[3]} />
+                <img onClick={() =>setImageindex(3)} className='cursor-pointer' src = {productimages[3]}  />
             </div>           
         </div>
 
@@ -58,6 +64,7 @@ return (
 
 
         </div>
+
 
 
     </div>

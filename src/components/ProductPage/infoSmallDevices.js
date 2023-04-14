@@ -11,7 +11,8 @@ import { useDispatch } from 'react-redux';
 import { addProduct } from '../../Redux/cartSlice';
 
 
-const InfoSmallDevices = ({listingData}) => {
+const InfoSmallDevices = ({listingData, sellerData}) => {
+    console.log(sellerData)
 
     const dispatch = useDispatch() ;
 
@@ -27,21 +28,21 @@ const InfoSmallDevices = ({listingData}) => {
             <AiOutlineHeart className='text-3xl cursor-pointer'/>
             <AiOutlineMail className='text-3xl cursor-pointer' />
         </div>
-        <h3 className='font-bold text-xl'>{listingData.SellerName}</h3>
-        <span className='font-bold text-xl'>£{listingData.Price}</span>
+        <h3 className='font-bold text-xl'>{listingData.title}</h3>
+        <span className='font-bold text-xl'>£{listingData.price}</span>
 
         <div >
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Size</p>
-                <p>{listingData.Size}</p>
+                <p>{listingData.size}</p>
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Condition</p>
-                <p>{listingData.Condition}</p>
+                <p>{listingData.condition}</p>
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Color</p>
-                <p>{listingData.Color}</p>
+                <p>{listingData.color}</p>
             </div>
 
             <button onClick={() => handleAddItem()} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
@@ -49,7 +50,7 @@ const InfoSmallDevices = ({listingData}) => {
             <p className='mt-1 font-light'>Listed {listingData.ListAge} ago</p>
 
             <p className='mt-3'>
-                {listingData.Description}
+                {listingData.description}
             </p>
 
             <div className='mt-3'>
@@ -58,19 +59,19 @@ const InfoSmallDevices = ({listingData}) => {
                         <img src ={listingData.profilePic} className='rounded-[50%] h-[50px]' />
                     </div>
                 <div>
-                    <p className='font-bold'>{listingData.SellerName}</p>
-                    <p className=' font-light'>{listingData.Location}</p>
+                    <p className='font-bold'>{sellerData.name}</p>
+                    <p className=' font-light'>{sellerData.location}</p>
                     <div className='flex'>
                         <RiStarSFill />
                         <RiStarSFill />
                         <RiStarSFill />
                         <RiStarSFill />
                         <RiStarSLine />
-                        <p className=' text-xs'>({listingData.SellerReviews})</p>
+                        <p className=' text-xs'>({sellerData.SaleReviews})</p>
                     </div>
                     <div className='flex mt-2'>
-                        <BsFillTagFill className='mr-1'/><span className='mr-4 font-light'>{listingData.SellerSales} sold</span>
-                        <BsLightningChargeFill className='mr-1'/><span>{listingData.Active}</span>
+                        <BsFillTagFill className='mr-1'/><span className='mr-4 font-light'>{sellerData.NumOfSales} sold</span>
+                        <BsLightningChargeFill className='mr-1'/><span>Active 1 day ago</span>
                     </div>
             </div>
 

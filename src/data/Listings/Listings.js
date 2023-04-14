@@ -15,7 +15,7 @@ import item2pic4 from '../../data/images/product3/img4.jpeg'
 
 const listingData = {
     listingId: 36728,
-    SellerId: 63737,
+    SellerId: '643859430d3b08bcce784616',
     sellerUserTag: "EmilyJ",
     Title: 'Womens Brown Jacket',
     Price: 135.00,

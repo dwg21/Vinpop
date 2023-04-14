@@ -6,7 +6,7 @@ import {IoMdShirt} from 'react-icons/io';
 import profile from '../../data/images/profile.jpeg';
 
 
-const InfoLargeDevices = (data) => {
+const InfoLargeDevices = ({listingData, sellerData}) => {
     return (
         <div className='stylings-larger-Devices p-4'>
             <div className='ml-4'>
@@ -16,15 +16,15 @@ const InfoLargeDevices = (data) => {
                         
                     </div>
                 <div>
-                    <p className='font-bold'>Emily Jones</p>
-                    <p className=' font-light'>Leeds, United Kingdom</p>
+                    <p className='font-bold'>{sellerData.name}</p>
+                    <p className=' font-light'>{sellerData.location}</p>
                     <div className='flex'>
                         <RiStarSFill />
                         <RiStarSFill />
                         <RiStarSFill />
                         <RiStarSFill />
                         <RiStarSLine />
-                        <p className=' text-xs'>(1662)</p>
+                        <p className=' text-xs'>{sellerData.SaleReviews}</p>
                     </div>
                 </div>
             </div>
@@ -35,8 +35,8 @@ const InfoLargeDevices = (data) => {
         <div className='py-2'><span className='font-bold'>56 </span> <span>likes</span></div>
         
         <div className='mb-4 sticky'>
-            <h3 className='font-bold text-xl'>Women's Brown Jacket</h3>
-            <span className='font-bold text-xl'>£135.00</span>
+            <h3 className='font-bold text-xl'>{listingData.title}</h3>
+            <span className='font-bold text-xl'>£{listingData.price}</span>
             <button className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Buy Now</button>
             <button className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
         </div>
@@ -45,15 +45,15 @@ const InfoLargeDevices = (data) => {
         <div >
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Size</p>
-                <p>M</p>
+                <p>{listingData.size}</p>
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Condition</p>
-                <p>Used - Excellent</p>
+                <p>{listingData.condition}</p>
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Color</p>
-                <p>Brown</p>
+                <p>{listingData.color}</p>
             </div>
 
             <p className='mt-1 font-light'>Listed 1 Day ago</p>

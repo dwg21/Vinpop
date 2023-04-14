@@ -1,6 +1,7 @@
 import React from 'react';
 import {AiOutlineClose, AiOutlineArrowRight} from 'react-icons/ai';
 import {BsInstagram, BsTwitter,BsFacebook } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 
 
@@ -20,8 +21,8 @@ const Hamburger = ({setHamburgerMenuActive}) => {
         </div>
 
         <div className='flex flex-col space-y-4 text-xl mt-5 font-bold'  >
-            <h2 className=' cursor-pointer'>Log in</h2>
-            <h2 className=' cursor-pointer'>Sign up</h2>
+            <Link to = '/login'><h2 className=' cursor-pointer'>Log in</h2></Link>
+            <Link to = '/register'><h2 className=' cursor-pointer'>Sign up</h2></Link>
             <h2 className=' cursor-pointer'>Get the app</h2>
             <div className='border-b-2'/>
         </div>

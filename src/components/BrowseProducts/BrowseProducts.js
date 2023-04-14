@@ -1,10 +1,16 @@
 import {useState} from 'react';
 
+
+// icons import
 import {FaSlidersH} from 'react-icons/fa';
 import {RiArrowUpDownFill} from 'react-icons/ri';
 
 import FilterMenu from './FilterMenu'
 import ProductGrid from './ProductGrid';
+
+//Custom axios request import
+
+
 
 const BrowseProducts = () => {
     
@@ -18,6 +24,8 @@ const BrowseProducts = () => {
         setSortActive(sortBy);
         setSortMenuActive(false);
     }
+
+
 
 
 return (
