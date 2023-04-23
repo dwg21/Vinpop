@@ -5,8 +5,18 @@ import {BsFillTagFill, BsLightningChargeFill, BsShieldCheck}  from 'react-icons/
 import {IoMdShirt} from 'react-icons/io';
 import profile from '../../data/images/profile.jpeg';
 
+// redux imports 
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../Redux/cartSlice';
+
 
 const InfoLargeDevices = ({listingData, sellerData}) => {
+    const dispatch = useDispatch();
+
+        const handleAddItem = () => {
+        dispatch(addProduct({id: listingData._id}))
+        }
+
     return (
         <div className='stylings-larger-Devices p-4'>
             <div className='ml-4'>
@@ -38,7 +48,7 @@ const InfoLargeDevices = ({listingData, sellerData}) => {
             <h3 className='font-bold text-xl'>{listingData.title}</h3>
             <span className='font-bold text-xl'>£{listingData.price}</span>
             <button className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Buy Now</button>
-            <button className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
+            <button onClick={handleAddItem} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
         </div>
 
 

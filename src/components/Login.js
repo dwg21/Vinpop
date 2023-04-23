@@ -3,10 +3,18 @@ import { Navigate, useNavigate } from 'react-router';
 
 import ServerApi from '../serverApi/axios';
 import { Link } from 'react-router-dom';
+
+
+import { useDispatch } from 'react-redux';
+import { addUserState } from '../Redux/userSlice';
 const loginUrl = 'api/v1/auth/login';
+
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
 
     const [loginUser, setLoginUser] = useState({
         name : "",
@@ -16,21 +24,23 @@ const Login = () => {
     const [errMsg, setErrMsg] = useState(null);
 
 
-
-
     const loginSubmit = async (e) => {
         e.preventDefault(); //stops reloading page
         const {email, password} = loginUser;
         const loginUserJson = {email, password};
         try {
-                await ServerApi.post(
+                const {data} = await ServerApi.post(
                 loginUrl, 
                 loginUserJson,
                 {withCredentials: true}
                 )  
 
-            setLoginUser({ name: '', email: '', password: '' });
-            navigate("/home");
+            setLoginUser({ email: '', password: '' });
+            dispatch(addUserState({
+                status: true,
+                name: data.user.name
+            }))
+            navigate("/");
 
         } 
             
@@ -51,13 +61,13 @@ const Login = () => {
         }
         try {
                 await ServerApi.post(
-                LOGIN_URL, 
+                loginUrl, 
                 loginUser,
                 {headers: {'Content-Type': 'application/json'}},
                 )  
 
-            setValues({ name: '', email: '', password: '' });
-            navigate("/home");
+            setLoginUser({ name: '', email: '', password: '' });
+            navigate("/");
 
         } 
             

@@ -8,17 +8,13 @@ import {IoMdShirt} from 'react-icons/io';
 
 // redux imports 
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../../Redux/cartSlice';
+import { addToCart } from '../../Redux/cartSlice';
 
 
 const InfoSmallDevices = ({listingData, sellerData}) => {
-    console.log(sellerData)
-
-    const dispatch = useDispatch() ;
-
-    const handleAddItem = () => {
-    dispatch(addProduct({id: listingData.listingId}))
-    }
+    // console.log(sellerData)
+    // console.log(listingData);
+    const dispatch = useDispatch() 
 
 
 
@@ -45,7 +41,7 @@ const InfoSmallDevices = ({listingData, sellerData}) => {
                 <p>{listingData.color}</p>
             </div>
 
-            <button onClick={() => handleAddItem()} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
+            <button onClick={() => dispatch(addToCart({listingId: listingData._id}))} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
 
             <p className='mt-1 font-light'>Listed {listingData.ListAge} ago</p>
 

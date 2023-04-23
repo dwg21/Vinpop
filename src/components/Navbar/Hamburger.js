@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 
-
-
-const Hamburger = ({setHamburgerMenuActive}) => {
+const Hamburger = ({setHamburgerMenuActive, user}) => {
     return (
     <div className='w-[320px] h-full z-50 bg-white fixed top-0   p-5 shadow-md overflow-y-auto'>
         <div className='flex justify-between align-middle'>
@@ -20,12 +18,20 @@ const Hamburger = ({setHamburgerMenuActive}) => {
             <AiOutlineClose className='text-2xl mr-2 cursor-pointer' onClick={() => setHamburgerMenuActive(false)}/>
         </div>
 
-        <div className='flex flex-col space-y-4 text-xl mt-5 font-bold'  >
+{     !user.loggedIn?  <div className='flex flex-col space-y-4 text-xl mt-5 font-bold'  >
             <Link to = '/login'><h2 className=' cursor-pointer'>Log in</h2></Link>
             <Link to = '/register'><h2 className=' cursor-pointer'>Sign up</h2></Link>
             <h2 className=' cursor-pointer'>Get the app</h2>
             <div className='border-b-2'/>
+        </div>: 
+        <div className='py-8 border-b-2'>
+            <div className='flex space-x-2 items-center'>
+                <div className=' flex rounded-[50%] text-xl w-[60px] h-[60px] bg-slate-500 p-2 font-bold justify-center items-center'>{user.name[0]}</div>
+                <h4 className='font-bold text-xl'>Your profile</h4>
+            </div>
+            <Link to ='/uploadlisting'><h4 className='pt-4 font-bold text-xl'>Upload lisiting</h4></Link>
         </div>
+        }
 
         <div>
             <h2 className=' my-4 text-lg font-bold'>Browse Vinpop</h2>

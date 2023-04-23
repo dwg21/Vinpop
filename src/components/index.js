@@ -5,4 +5,6 @@ export {default as Cart} from  './Cart/Cart';
 export {default as BrowseProducts} from  './BrowseProducts/BrowseProducts';
 export {default as Login} from  './Login';
 export {default as Register} from  './Register';
+export {default as UploadListing} from  './UploadListing/UploadListing';
+
 
