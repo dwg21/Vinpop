@@ -58,12 +58,54 @@ const updateUserPassword = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: 'Success! Password Updated.' });
 };
 
+
+const viewFavorites = async (req, res) => {
+  const user = await User.findOne({ _id: req.user.userId });
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${req.params.id}`);
+  }
+  const favorites = user.favorites;
+  res.status(StatusCodes.OK).json({favorites});
+
+
+}
+
+const addFavorite = async (req, res) => {
+  const {listingId} = req.body;
+  console.log(listingId)
+  const user = await User.findOne({ _id: req.user.userId });
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${req.params.id}`);
+  }
+  user.favorites = [...user.favorites, listingId];
+  await user.save()
+  res.status(StatusCodes.OK).json({user});
+}
+
+const removeFavorite = async (req, res) => {
+  const {listingId} = req.query;
+  console.log(req.listingId);
+  const user = await User.findOne({ _id: req.user.userId });
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${req.params.id}`);
+  }
+  user.favorites = user.favorites.filter(listing => listing !== listingId);
+  await user.save()
+
+  res.status(StatusCodes.OK).json({user})
+  
+
+}
+
 module.exports = {
   getAllUsers,
   getSingleUser,
   showCurrentUser,
   updateUser,
   updateUserPassword,
+  addFavorite,
+  removeFavorite,
+  viewFavorites
 };
 
 // update user with findOneAndUpdate

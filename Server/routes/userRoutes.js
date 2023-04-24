@@ -10,6 +10,9 @@ const {
   showCurrentUser,
   updateUser,
   updateUserPassword,
+  addFavorite,
+  removeFavorite,
+  viewFavorites
 } = require('../controllers/userController');
 
 router
@@ -19,6 +22,11 @@ router
 router.route('/showMe').get(authenticateUser, showCurrentUser);
 router.route('/updateUser').patch(authenticateUser, updateUser);
 router.route('/updateUserPassword').patch(authenticateUser, updateUserPassword);
+
+router.route('/favorites')
+  .get(authenticateUser, viewFavorites)
+  .post(authenticateUser, addFavorite)
+  .delete(authenticateUser, removeFavorite)
 
 router.route('/:id').get(authenticateUser, getSingleUser);
 

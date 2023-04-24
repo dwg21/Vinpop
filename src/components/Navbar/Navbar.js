@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {AiOutlineSearch, AiOutlineMenu} from 'react-icons/ai'
+import {AiOutlineSearch, AiOutlineMenu, AiFillHeart} from 'react-icons/ai'
 import SearchMenu from './SearchMenu';
 import Hamburger from './Hamburger'
 import ShoppingCartBadge from './ShoppingCartBadge'
@@ -37,8 +37,14 @@ return (
                 <div  className='flex'>
                     <AiOutlineSearch onClick={()=> setSearchMenuActive(true)} className = 'text-2xl mr-3 md:hidden cursor-pointer'/>
                     
-                    {user.loggedIn? <> <Link to = '/bag'><ShoppingCartBadge /></Link> </> : <>
+                    {user.loggedIn? <> 
+                    <Link to ='/favorites'><AiFillHeart className='text-2xl mx-3' /></Link>
+                    <Link to = '/bag'><ShoppingCartBadge /></Link>  </> : <>
+            
+                    
                     <div className='mr-3 py-1 px-3.5 h-[90%] bg-black cursor-pointer'><p className='text-white font-bold'>Sign Up</p></div>
+                    
+                    
                     <p className='p-1 font-bold cursor-pointer'>Log in</p> </>}
                     
                     

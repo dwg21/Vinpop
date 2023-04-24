@@ -23,6 +23,39 @@ export const getCurrentUser = createAsyncThunk(
     }
 )
 
+// export const addFavorite = createAsyncThunk(
+//     "user/addFavorite",
+//     async (values) => {
+//         try {
+//             console.log(values)
+//         const response = await serverApi.post(
+//             `api/v1/users/favorites`,
+//             values,
+//             {headers: {'Content-Type': 'multipart/form-data'}}
+//             );
+//         console.log(response.data)
+//         return response.data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
+
+// export const removeFavorite = createAsyncThunk(
+//     "user/removeFavorite",
+//     async (value) => {
+//         try {
+//             console.log(value)
+//         const response = await serverApi.delete(
+//             `api/v1/users/favorites?listingId=${value}`,
+//             {headers: {'Content-Type': 'multipart/form-data'}}
+//             );
+//         console.log(response.data)
+//         return response.data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
+
 
 const userSlice = createSlice( {
     name: 'user',

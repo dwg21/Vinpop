@@ -1,7 +1,5 @@
-import {useEffect, useState} from 'react';
-import {AiOutlineHeart} from 'react-icons/ai'
-import { Link } from 'react-router-dom';
-import ServerApi from '../../serverApi/axios';
+import React, {useEffect} from 'react';
+
 
 import {selectAllListings, getListingsStatus, getListingsError, fetchCart, fetchAllLisings} from '../../Redux/listingSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,11 +8,7 @@ import { selectFavorites } from '../../Redux/favoriteSlice';
 import { getFavoriteStatus } from '../../Redux/favoriteSlice';
 import {getuserFavorites} from '../../Redux/favoriteSlice';
 
-const UserDataUrl = 'api/v1/listing'
-
-
-
-const ProductGrid = () => {   
+const Favorites = () => {   
     const dispatch = useDispatch();
     const listings = useSelector(selectAllListings);
     const listingStatus = useSelector(getListingsStatus);
@@ -36,20 +30,20 @@ const ProductGrid = () => {
         }
     }, [favorites, dispatch])
 
-    console.log(favorites)
-    console.log(favoritesStatus)
-
+    console.log(listings)
 
 
     
+    // Filters lisings to only liked listing
+    const FilteredListings = listings.filter((listing) => favorites.includes(listing._id))
+    
     //Changes page content based on status of request for cart data results
-
     let content ; 
 
     if (listingStatus === 'loading') {
         content = <p>Loading...</p>
     } else if (listingStatus === 'suceeded' && listings) {
-        content =  listings.map((item, index) => (
+        content =  FilteredListings.map((item, index) => (
             <GridImage 
                 item={item}
                 index = {index}
@@ -59,10 +53,12 @@ const ProductGrid = () => {
     } else if (listingStatus === 'failed') {
         content = <p>error</p>
     } 
+    
 
 
     return (
-    <div>
+    <div className='p-8'>
+        <h2 className='text-2xl font-bold'>Favorites</h2>
         <div className='py-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4'>
             {content}
         </div>  
@@ -71,4 +67,4 @@ const ProductGrid = () => {
     
 }
 
-export default ProductGrid
+export default Favorites

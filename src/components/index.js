@@ -6,5 +6,6 @@ export {default as BrowseProducts} from  './BrowseProducts/BrowseProducts';
 export {default as Login} from  './Login';
 export {default as Register} from  './Register';
 export {default as UploadListing} from  './UploadListing/UploadListing';
+export {default as Favorites} from  './BrowseProducts/Favorites';
 
 

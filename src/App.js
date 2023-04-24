@@ -6,7 +6,8 @@ import {
     BrowseProducts, 
     Login, 
     Register,
-    UploadListing
+    UploadListing,
+    Favorites
   } from "./components";
 
 import { useEffect } from "react";
@@ -38,6 +39,7 @@ function App() {
             <Route exact path ='/' element = {<Home/>} />
             <Route exact path ='/bag' element = {<Cart/>} />
             <Route exact path = '/browseproducts' element = {<BrowseProducts />} />
+            <Route exact path = '/favorites' element = {<Favorites />} />
             <Route exact path = '/login' element = {<Login />} />
             <Route exact path = '/register' element = {<Register />} />
             <Route exact path = '/uploadlisting' element = {<UploadListing />} />

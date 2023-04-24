@@ -5,7 +5,8 @@ import serverApi from '../serverApi/axios'
 const initialState = {
     listings: [],
     status: 'idle', //idle | loading | suceeded | failed
-    error: null
+    error: null,
+    newListingStatus: 'idle' //idle | loading | suceeded | failed
 }
 
 
@@ -80,7 +81,6 @@ export const createListing = createAsyncThunk(
         console.log(error);
     }
 });
-
 
 
 
