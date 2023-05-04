@@ -11,8 +11,6 @@ import { removeFavorite } from '../../Redux/favoriteSlice';
 
 const GridImage = ({item, index, favorites }) => {
     const dispatch = useDispatch()
-
-
     const [ListingLike, setListingLike] = useState(false);
     
     // checks if any of images on page are already liked 

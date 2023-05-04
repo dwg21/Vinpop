@@ -37,8 +37,6 @@ const ImageGallery = ({listingData}) => {
 
 return (
     <div className=''>
-            {/* <img src= '/images/product1/img2.jpeg' className='mouse-highlight cursor-pointer' alt='productImg' /> */}
-
 
         <div className='small-screen-gallery md:hidden'>
             <div className='relative '>
@@ -55,7 +53,7 @@ return (
             </div>           
         </div>
 
-        <div className='large-screen-gallery flex-col space-y-4 max-w-4xl lg:max-w-6xl hidden md:flex'>
+        <div className='large-screen-gallery flex-col space-y-4 max-w-xl lg:max-w-3xl hidden md:flex'>
             <img src = {productimages[0]} />
             <img src = {productimages[1]} />
             <img src = {productimages[2]} />

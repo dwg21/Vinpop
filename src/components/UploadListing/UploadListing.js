@@ -11,6 +11,7 @@ const UploadListing = () => {
         title: "",
         size: "",
         description: "",
+        swapDetails: "",
         Category: "",
         Subcategory: "",
         Brand: "",
@@ -62,6 +63,17 @@ const UploadListing = () => {
                     rows = '6'
                     placeholder
                     ='Enter description of product here'
+                    onChange={handleChange}
+                />
+
+            < label for = 'swapDetails' className='font-bold text-xl pt-4 pb-1'>Swap Details</label>
+                <textarea
+                    className='w-full border-2 border-black p-3'
+                    id = 'swapDetails'
+                    name = 'swapDetails'
+                    rows = '6'
+                    placeholder
+                    ='What type of items are you looking to swap this for?'
                     onChange={handleChange}
                 />
 
@@ -134,7 +146,7 @@ const UploadListing = () => {
                 formData = {formData}
                 />
 
-
+{/* 
                 <h3 className='font-bold text-xl mt-3 my-3' >Shipping</h3>
 
                 <input
@@ -156,14 +168,11 @@ const UploadListing = () => {
                     placeholder
                     ='£0.00'
                     onChange={handleChange}
-                />
+                /> */}
 
             <button onClick={handelSubmit} className=' bg-black  py-2 font-bold w-full text-white my-4'>Submit Listing</button>
 
             </form>
-
-
-
         </div>
     </div>
     )

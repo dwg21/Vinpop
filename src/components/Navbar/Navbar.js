@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {AiOutlineSearch, AiOutlineMenu, AiFillHeart} from 'react-icons/ai'
+import {AiOutlineSearch, AiOutlineMenu, AiFillHeart, AiFillMessage} from 'react-icons/ai'
 import SearchMenu from './SearchMenu';
 import Hamburger from './Hamburger'
 import ShoppingCartBadge from './ShoppingCartBadge'
 import { Link } from 'react-router-dom';
+
 
 
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +29,7 @@ return (
             <div className='flex justify-around pt-4 pb-2 align-middle'>
                 <AiOutlineMenu onClick={() => setHamburgerMenuActive(true)}  className='text-3xl  md:hidden cursor-pointer' />
 
-                <Link to ='/'><h2 className='font-extrabold text-red-500 text-2xl mr-6 '>VinPoP</h2></Link>
+                <Link to ='/'><h2 className='font-extrabold text-red-500 text-2xl mr-6 '>VinSwap</h2></Link>
                 <div className='pl-2  border-2 justify-center items-center border-black	hidden md:flex'>
                     <AiOutlineSearch/>
                     <input type="text"  placeholder="Search for items, brands, or styles.." className="flex w-[300px] py-2 px-1.5 font-epilogue font-normal text-[14px] placeholder:text-black dark:placeholder:text-[#4b5264] text-black dark:text-white bg-transparent outline-none	" />
@@ -37,15 +38,18 @@ return (
                 <div  className='flex'>
                     <AiOutlineSearch onClick={()=> setSearchMenuActive(true)} className = 'text-2xl mr-3 md:hidden cursor-pointer'/>
                     
-                    {user.loggedIn? <> 
+                    {user.loggedIn? <>
+                    <Link to ='/offers'><AiFillMessage className='text-2xl mx-3'  /> </Link>
                     <Link to ='/favorites'><AiFillHeart className='text-2xl mx-3' /></Link>
-                    <Link to = '/bag'><ShoppingCartBadge /></Link>  </> : <>
+                    <Link to = '/bag'><ShoppingCartBadge /></Link>
+                    </> : <>
+                
             
                     
                     <div className='mr-3 py-1 px-3.5 h-[90%] bg-black cursor-pointer'><p className='text-white font-bold'>Sign Up</p></div>
                     
                     
-                    <p className='p-1 font-bold cursor-pointer'>Log in</p> </>}
+                    <Link to = "/login"><p className='p-1 font-bold cursor-pointer'>Log in</p> </Link></>}
                     
                     
                 </div>

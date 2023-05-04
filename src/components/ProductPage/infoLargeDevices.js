@@ -8,6 +8,7 @@ import profile from '../../data/images/profile.jpeg';
 // redux imports 
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../Redux/cartSlice';
+import { Link } from 'react-router-dom';
 
 
 const InfoLargeDevices = ({listingData, sellerData}) => {
@@ -18,7 +19,7 @@ const InfoLargeDevices = ({listingData, sellerData}) => {
         }
 
     return (
-        <div className='stylings-larger-Devices p-4'>
+        <div className='stylings-larger-Devices p-4 sticky top-[150px] '>
             <div className='ml-4'>
                 <div className='mb-5 flex space-x-4'>
                     <div>
@@ -46,9 +47,7 @@ const InfoLargeDevices = ({listingData, sellerData}) => {
         
         <div className='mb-4 sticky'>
             <h3 className='font-bold text-xl'>{listingData.title}</h3>
-            <span className='font-bold text-xl'>£{listingData.price}</span>
-            <button className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Buy Now</button>
-            <button onClick={handleAddItem} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
+            <Link to = {`/makeOffer/${listingData._id}`}><button onClick={handleAddItem} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Make Offer</button></Link>
         </div>
 
 
@@ -59,18 +58,23 @@ const InfoLargeDevices = ({listingData, sellerData}) => {
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Condition</p>
-                <p>{listingData.condition}</p>
+                <p>{listingData.Condition}</p>
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Color</p>
-                <p>{listingData.color}</p>
+                <p>{listingData.Color}</p>
             </div>
 
             <p className='mt-1 font-light'>Listed 1 Day ago</p>
 
             <p className='mt-3'>
-                UK POSTAGE - DISCOUNT ON BUNDLES
-                Amazing brown distressed retro leather biker bomber zip up jacket - vintage - real leather - mens size M - shown on a size 8 who is 5”9 and fits oversized
+                <h3 className='font-bold'>Description</h3>
+                {listingData.description}
+            </p>
+
+            <p className='mt-3'>
+                <h3 className='font-bold'>Seller is looking to swap for:</h3>
+                {listingData.swapDetails}
             </p>
 
 

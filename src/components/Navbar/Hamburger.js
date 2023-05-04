@@ -27,7 +27,7 @@ const Hamburger = ({setHamburgerMenuActive, user}) => {
         <div className='py-8 border-b-2'>
             <div className='flex space-x-2 items-center'>
                 <div className=' flex rounded-[50%] text-xl w-[60px] h-[60px] bg-slate-500 p-2 font-bold justify-center items-center'>{user.name[0]}</div>
-                <h4 className='font-bold text-xl'>Your profile</h4>
+                <Link to ='/userlistings'><h4 className='font-bold text-xl'>Your Listings</h4></Link>
             </div>
             <Link to ='/uploadlisting'><h4 className='pt-4 font-bold text-xl'>Upload lisiting</h4></Link>
         </div>

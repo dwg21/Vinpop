@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 // icon imports
 import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai';
@@ -13,7 +15,7 @@ import { addToCart } from '../../Redux/cartSlice';
 
 const InfoSmallDevices = ({listingData, sellerData}) => {
     // console.log(sellerData)
-    // console.log(listingData);
+    console.log(listingData);
     const dispatch = useDispatch() 
 
 
@@ -24,8 +26,7 @@ const InfoSmallDevices = ({listingData, sellerData}) => {
             <AiOutlineHeart className='text-3xl cursor-pointer'/>
             <AiOutlineMail className='text-3xl cursor-pointer' />
         </div>
-        <h3 className='font-bold text-xl'>{listingData.title}</h3>
-        <span className='font-bold text-xl'>£{listingData.price}</span>
+        <h3 className='font-bold text-xl mt-2'>{listingData.title}</h3>
 
         <div >
             <div className='border-b-2 flex justify-between py-2'>
@@ -34,19 +35,24 @@ const InfoSmallDevices = ({listingData, sellerData}) => {
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Condition</p>
-                <p>{listingData.condition}</p>
+                <p>{listingData.Condition}</p>
             </div>
             <div className='border-b-2 flex justify-between py-2'>
                 <p>Color</p>
-                <p>{listingData.color}</p>
+                <p>{listingData.Color}</p>
             </div>
 
-            <button onClick={() => dispatch(addToCart({listingId: listingData._id}))} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Add to bag</button>
+            <Link to = {`/makeOffer/${listingData._id}`}><button onClick={() => dispatch(addToCart({listingId: listingData._id}))} className=' mt-4 border-2 border-black w-full py-2 font-bold cursor-pointer'>Make Offer</button></Link>
 
-            <p className='mt-1 font-light'>Listed {listingData.ListAge} ago</p>
 
             <p className='mt-3'>
+                <h3 className='font-bold'>Description</h3>
                 {listingData.description}
+            </p>
+
+            <p className='mt-3'>
+            <h3 className='font-bold'>Seller is looking to swap for:</h3>
+                {listingData.swapDetails}
             </p>
 
             <div className='mt-3'>
@@ -83,7 +89,7 @@ const InfoSmallDevices = ({listingData, sellerData}) => {
                     <IoMdShirt className='text-2xl mr-2'/>
                     <span className='font-bold'>Got one like this?</span>
                 </div>
-                <p className=' text-blue-700 cursor-pointer mt-2'>Sell a similar item </p>
+                <Link><p className=' text-blue-700 cursor-pointer mt-2'>Sell a similar item </p></Link>
             </div>            
         </div>
         </div>

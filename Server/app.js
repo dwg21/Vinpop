@@ -23,6 +23,7 @@ const authRouter = require('./routes/authRoutes');
 const userRouter = require('./routes/userRoutes');
 const listingRouter = require('./routes/listingRoutes');
 const cartRouter = require('./routes/CartRoutes');
+const offerRoute  = require('./routes/offerRoutes');
 
 
 
@@ -56,6 +57,9 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/listing', listingRouter);
 app.use('/api/v1/cart', cartRouter);
+app.use('/api/v1/offer', offerRoute);
+
+
 
 
 

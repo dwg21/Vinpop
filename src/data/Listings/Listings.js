@@ -1,16 +1,16 @@
 
-import profile from '../../data/images/profile.jpeg';
+// import profile "sender" '../../data/images/profile.jpeg';
 
-import itempic1 from '../../data/images/itempic1.jpeg';
-import itempic2 from '../../data/images/itempic2.jpeg';
-import itempic3 from '../../data/images/itempic3.jpeg';
-import itempic4 from '../../data/images/itempic4.jpeg';
+// import itempic1 "sender" '../../data/images/itempic1.jpeg';
+// import itempic2 "sender" '../../data/images/itempic2.jpeg';
+// import itempic3 "sender" '../../data/images/itempic3.jpeg';
+// import itempic4 "sender" '../../data/images/itempic4.jpeg';
 
 
-import item2pic1 from '../../data/images/product3/img1.jpeg'
-import item2pic2 from '../../data/images/product3/img2.jpeg'
-import item2pic3 from '../../data/images/product3/img3.jpeg'
-import item2pic4 from '../../data/images/product3/img4.jpeg'
+// import item2pic1 "sender" '../../data/images/product3/img1.jpeg'
+// import item2pic2 "sender" '../../data/images/product3/img2.jpeg'
+// import item2pic3 "sender" '../../data/images/product3/img3.jpeg'
+// import item2pic4 "sender" '../../data/images/product3/img4.jpeg'
 
 
 const listingData = {
@@ -67,9 +67,24 @@ const listingData2 = {
 
 
 
-
-
 export const allListings = [
     listingData,
     listingData2
 ]
+
+// {
+//     "Pic1": "hhd",
+//     "Pic2": "hhd",
+//     "link1": "",
+//     "link2" :"",
+    // "chat": [
+    //     { "message": "Hey there! What's up", "sender": 'buyer'},
+    //     { "message": 'Checking out iOS7 you know..', "sender": "seller" },
+    //     { "message": 'Check out this bubble!', "sender": 'buyer' },
+    //     { "message": "It's pretty cool!", "sender" :'seller'},
+    //     { "message": "And it's in css?", "sender": "buyer"  },
+    //     { "message": "Yeah it's pure CSS &amp; HTML", "sender": 'buyer' },
+    //     { "message": "Wow that's impressive. But what's even more impressive is that this bubble is really high.", "sender": "seller"},
+    // ]
+
+// }
