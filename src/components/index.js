@@ -11,6 +11,6 @@ export {default as Chat} from './Chat/Chat';
 export {default as Offers} from './Offers/Offers';
 export {default as UserListings} from './User/UserListings';
 export {default as MakeOffer} from './MakeOffer.js/MakeOffer';
-
+export {default as EditListing} from './EditListing/EditListing';
 
 

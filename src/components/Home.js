@@ -109,7 +109,7 @@ return (
             </div>
 
             <div className='mt-5'>
-                <p className='font-bold text-3xl pr-8 tracking-wide'>Be part of the community that's transforming fashion one item at a time.</p>
+                <p className='font-bold text-3xl pr-8 tracking-wide'>Be part of the community that's transforming fashion one swap at a time.</p>
             </div>
 
         </div> 

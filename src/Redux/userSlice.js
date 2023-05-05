@@ -4,7 +4,8 @@ import serverApi from "../serverApi/axios";
 const initialState = {
     user: {
         loggedIn: false,
-        name: " "
+        name: " ",
+        userId: ""
     },
     status: 'idle', //idle | loading | suceeded | failed
 }
@@ -23,38 +24,6 @@ export const getCurrentUser = createAsyncThunk(
     }
 )
 
-// export const addFavorite = createAsyncThunk(
-//     "user/addFavorite",
-//     async (values) => {
-//         try {
-//             console.log(values)
-//         const response = await serverApi.post(
-//             `api/v1/users/favorites`,
-//             values,
-//             {headers: {'Content-Type': 'multipart/form-data'}}
-//             );
-//         console.log(response.data)
-//         return response.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
-
-// export const removeFavorite = createAsyncThunk(
-//     "user/removeFavorite",
-//     async (value) => {
-//         try {
-//             console.log(value)
-//         const response = await serverApi.delete(
-//             `api/v1/users/favorites?listingId=${value}`,
-//             {headers: {'Content-Type': 'multipart/form-data'}}
-//             );
-//         console.log(response.data)
-//         return response.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
 
 
 const userSlice = createSlice( {
@@ -81,9 +50,11 @@ const userSlice = createSlice( {
             .addCase(getCurrentUser.fulfilled, (state, action) => {
                 state.status = 'suceeded'
                 const {user} = action.payload ;
+                console.log(user)
                 if (user) {
                     state.user.name = user.name
                     state.user.loggedIn = true
+                    state.user.userId = user.userId
                 }
                 
                 console.log(state.user)

@@ -11,7 +11,8 @@ import {
     Chat,
     Offers,
     UserListings,
-    MakeOffer
+    MakeOffer,
+    EditListing
   } from "./components";
 
 import { useEffect } from "react";
@@ -50,6 +51,7 @@ function App() {
             <Route exact path = '/chat/:id' element = {<Chat />} />
             <Route exact path = '/offers' element = {<Offers/>} />
             <Route exact path = '/UserListings' element = {<UserListings/>} />
+            <Route exact path = '/editListing/:id' element = {<EditListing/>} />
             <Route exact path = '/makeOffer/:id' element = {<MakeOffer/>} />
             <Route exact path = 'listing/:id' element = {<ProductPage />} />
           </Routes>          

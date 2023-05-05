@@ -6,13 +6,14 @@ import {SiMinutemailer} from 'react-icons/si'
 import {TiTick} from 'react-icons/ti';
 import {ImCross} from 'react-icons/im'
 
-const OfferDetails = ({offer}) => {
+const OfferDetails = ({offer, toggleOffers}) => {
     const [ListingPicture, setListingPicture] = useState(null);
 
     const getListingDetails = async () => {
+        
         try {
             const response = await ServerApi.get(
-                `api/v1/listing/${offer.sellerListingId}`,
+                `api/v1/listing/${toggleOffers === 'Sent' ? offer.sellerListingId: offer.offerListingId }`,
                 {headers: {'Content-Type': 'application/json'}}
             )
 
@@ -26,10 +27,8 @@ const OfferDetails = ({offer}) => {
 
 
     useEffect(() => {
-        if (!ListingPicture) {
-            getListingDetails()
-        }
-    }, [])
+        getListingDetails()
+    }, [toggleOffers])
 
 
 

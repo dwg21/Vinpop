@@ -5,31 +5,24 @@ import {AiOutlineSend} from 'react-icons/ai'
 
 import { Link, useParams } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../Redux/userSlice';
 
 import Message from './Message';
 import serverApi from '../../serverApi/axios';
+import StatusSection from './StatusSection';
 
-// const messages = [
-//     { text: "Hey there! What's up", from: 'buyer'},
-//     { text: 'Checking out iOS7 you know..', from: "seller" },
-//     { text: 'Check out this bubble!', from: 'buyer' },
-//     { text: "It's pretty cool!", from :'seller'},
-//     { text: "And it's in css?", from: "buyer"  },
-//     { text: "Yeah it's pure CSS &amp; HTML", from: 'buyer' },
-//     { text: "(ok.. almost, I added a tiny bit of JS to remove sibling message tails)", from: 'seller' },
-//     { text: "Wow that's impressive. But what's even more impressive is that this bubble is really high.", from: "seller"},
-// ]
 
 
 const Chat = () => {
     const params = useParams();
-    const dispatch = useDispatch();
     const {id} = params;
     const [offerDetails, setOfferDetails] = useState(null);
     const [listingDetails, setListingDetails] = useState(null)
     const [listingDetails2, setListingDetails2] = useState(null);
     const [message, setMessage] = useState(null);
+    const user = useSelector(selectUser);
+    console.log(user)
 
     useEffect(() => {
         const getOffer = async () => {
@@ -57,7 +50,6 @@ const Chat = () => {
                         console.log(SingleListing2)
                         setListingDetails2(SingleListing2)
 
-                    
 
             } catch (error) {
                 console.log({"offerId": id})
@@ -117,6 +109,22 @@ const Chat = () => {
     }
 
 
+    let typeOfOffer // sent or recived
+
+    // console.log(offerDetails.userId)
+    // console.log(user.userId)
+
+    if (offerDetails && user) {
+        if (user.userId === offerDetails.userId ) {
+            typeOfOffer = "sent"
+        } else {
+            typeOfOffer = 'received'
+        }
+    }
+
+    console.log(typeOfOffer)
+
+
 
 
 
@@ -140,15 +148,9 @@ const Chat = () => {
                     <Link to ={`/listing/${offerDetails.sellerListingId}`}> <img className='h-[200px]' src ={listingDetails2.image1} /> </Link>
                 </div>
 
-{offerDetails.status === 'pending' ?
-                <div className='offerSection border-b-2 flex justify-around mt-4 pb-4   '>
-                    <button onClick={() => changeStatus('accepted')} className='bg-black w-full mx-6 p-5 text-white font-bold'>Accept</button>
-                    <button className='bg-white w-full border-2 border-black mx-6 p-5 text-black font-bold'>Decline</button>
-                </div> :
-                    <div className='offerSection border-b-2 flex justify-around mt-4 pb-4   '>
-                        <h2>Offer Accepted - Please arrange the delivery/swap</h2>
-                    </div>
-                }
+                <StatusSection offerDetails = {offerDetails} changeStatus = {changeStatus} typeOfOffer = {typeOfOffer} />
+
+
                 
                 <div className='ChatSection p-5 overflow-y-scroll h-[500px] border-2 '>
                 <Message 

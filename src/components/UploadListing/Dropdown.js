@@ -4,8 +4,8 @@ import {TiTick} from 'react-icons/ti';
 
 const list = ['shoes', 'tops', 'trousers', 'hats']
 
-const Dropdown = ({options, title, setFormData, formData}) => {
-    const [optionSelected, setOptionSelected] = useState('');
+const Dropdown = ({options, title, setFormData, formData, value}) => {
+    const [optionSelected, setOptionSelected] = useState(null);
     const [activeDropDown, setActiveDropdown] = useState(false);
 
     const handleSelect = (category) => {
@@ -13,6 +13,10 @@ const Dropdown = ({options, title, setFormData, formData}) => {
         setOptionSelected(category)
         setFormData({ ...formData, [title]: category});
 
+    }
+
+    if (!optionSelected && value) {
+        setOptionSelected(value)
     }
 
 

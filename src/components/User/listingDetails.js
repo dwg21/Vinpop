@@ -37,7 +37,7 @@ return (
     <div>
         <img className='h-[150px] w-[150px]' src = {listing.image1} />
         <div className='flex justify-center items-center gap-3 mt-4'>
-            <Link className='flex gap-3'>
+            <Link to = {`/editListing/${listing._id}`} className='flex gap-3'>
                 <span >Edit</span>
                 <AiFillEdit className='text-xl' />
             </Link>

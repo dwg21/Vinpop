@@ -9,7 +9,7 @@ import OfferDetails from './OfferDetails';
 const Offers = () => {
     const [sentOffers, setSentOffers] = useState(null);
     const [receivedOffers, setReceivedOffers] = useState(null);
-
+    
     const [toggleOffers, setToggleOffers] = useState('Sent')
 
     const getSentOffers = async () => {
@@ -34,8 +34,8 @@ const Offers = () => {
                 {headers: {'Content-Type': 'application/json'}}
             )
 
-            console.log(response.data.offers);
-            setReceivedOffers(response.data.offers)
+            console.log(response.data);
+            setReceivedOffers(response.data.sellerOffers)
 
         } catch (error) {
             console.log(error)
@@ -74,12 +74,12 @@ const Offers = () => {
                 {toggleOffers === "Sent" ?
                 sentOffers.map((offer, index) => (
                     <div>
-                        <OfferDetails id= {index} offer = {offer} />
+                        <OfferDetails id= {index} offer = {offer} toggleOffers = {toggleOffers} />
                     </div>
                 )) :
                 receivedOffers.map((offer, index) => (
                     <div>
-                        <OfferDetails id= {index} offer = {offer} />
+                        <OfferDetails id= {index} offer = {offer} toggleOffers = {toggleOffers} />
                     </div>
                 ))
                 }

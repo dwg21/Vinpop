@@ -15,8 +15,6 @@ const GridImage = ({item, index, favorites }) => {
     
     // checks if any of images on page are already liked 
     const checkLikes = () => {
-        console.log(item.id)
-        console.log(favorites)
 
         if (favorites.includes(item.id) ) {
             console.log('hello')
@@ -49,8 +47,8 @@ const GridImage = ({item, index, favorites }) => {
                 <img  src= {item.image1} className='mouse-highlight cursor-pointer' alt='productImg' />
             </Link>
                 { !ListingLike ? 
-                <AiOutlineHeart onClick={() => handleLike(item.id)} className='text-2xl absolute bottom-1 right-1 z-50 cursor-pointer text-white  '/> :
-                <AiFillHeart onClick={() => handleDislike(item.id)}  className='text-2xl absolute bottom-1 right-1 z-50 cursor-pointer text-red-800' />
+                <AiOutlineHeart onClick={() => handleLike(item.id)} className='text-2xl absolute bottom-1 right-1  cursor-pointer text-white  '/> :
+                <AiFillHeart onClick={() => handleDislike(item.id)}  className='text-2xl absolute bottom-1 right-1  cursor-pointer text-red-800' />
                 }
                 {/* {likes.map((item, index) => (
                     <p>likes</p>

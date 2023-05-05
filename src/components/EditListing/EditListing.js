@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import Dropdown from './Dropdown';
-import PhotoUpload from './PhotoUpload';
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom';
+import Dropdown from '../UploadListing/Dropdown';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import ServerApi from '../../serverApi/axios';
 
 import { createListing } from '../../Redux/listingSlice';
+import { tr } from 'date-fns/locale';
 
-const UploadListing = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+const EditListing = () => {
+    const navigate = useNavigate()
+    const params = useParams();
+    const {id} = params;
     const [formData, setFormData] = useState({
         title: "",
         size: "",
@@ -20,12 +22,9 @@ const UploadListing = () => {
         Condition: "",
         Color: "",
         Style: "",
-        shippingPrice: "",
-        productImg1: "",
-        productImg2: "Not-Uploaded",
-        productImg3: "Not-uploaded",
-        productImg4: "Not-Uploaded"
-    }) 
+
+    });
+    const [listingDataLoaded, setLisitingDataLoaded] = useState(false);
 
 
     const handleChange = (e) => {
@@ -34,9 +33,110 @@ const UploadListing = () => {
 
     const handelSubmit = (e) => {
         e.preventDefault(); //stops reloading page
-        dispatch(createListing(formData))
-        navigate('/')
+        editListing()
+        
     }
+
+    const handleDelete = (e) => {
+        e.preventDefault(); //stops reloading page
+        deleteListing()
+
+    }
+
+    const loadListing = async () => {
+        try {
+            const {data} = await ServerApi.get(
+                `/api/v1/listing/${id}`,
+                {headers: {'Content-Type': 'application/json'}}
+            )
+            const {SingleListing} = data  ;
+            console.log(SingleListing)
+
+            const {
+                title,
+                size,
+                description,
+                swapDetails,
+                Category,
+                Subcategory,
+                Brand,
+                Condition,
+                Color,
+                Style,
+
+            } = SingleListing
+
+            
+            
+            setFormData({                 
+                title,
+                size,
+                description,
+                swapDetails,
+                Category,
+                Subcategory,
+                Brand,
+                Condition,
+                Color,
+                Style,
+                });
+
+                setLisitingDataLoaded(true)
+
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    useEffect(() => {
+        if (!listingDataLoaded ) {
+        loadListing()
+        }
+    }, [])
+
+
+    const editListing = async () => {
+        try {
+            const {data} = await ServerApi.patch(
+                `/api/v1/listing/${id}`,
+                formData,
+                {headers: {'Content-Type': 'application/json'}}
+            )
+
+            navigate(`/`)
+
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const deleteListing = async () => {
+        try {
+            const {data} = await ServerApi.delete(
+                `/api/v1/listing/${id}`,
+                {headers: {'Content-Type': 'application/json'}}
+            )
+
+            navigate(`/`)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+
+
+
+
+
+    
+
 
     
     return (
@@ -46,18 +146,12 @@ const UploadListing = () => {
     
     <div className='py-6 px-12 '>
         <div className=''>
-            <h2 className='font-bold text-3xl border-b-2 py-5'>List an item</h2>
-            <h3 className='font-bold text-xl py-4'>Photos</h3>
-            <p className='mb-2 font-light'>Add up to 4 photos in JPEG format</p>
-            <PhotoUpload
-                formData= {formData}
-                setFormData={setFormData}
-            />
-
+            <h2 className='font-bold text-3xl border-b-2 py-5'>Edit your Listing</h2>
 
             <form className='flex flex-col gap-3'>
                 < label for = 'description' className='font-bold text-xl pt-4 pb-1'>Description</label>
                 <textarea
+                    value={formData.description}
                     className='w-full border-2 border-black p-3'
                     id = 'description'
                     name = 'description'
@@ -69,6 +163,7 @@ const UploadListing = () => {
 
             < label for = 'swapDetails' className='font-bold text-xl pt-4 pb-1'>Swap Details</label>
                 <textarea
+                    value={formData.swapDetails}
                     className='w-full border-2 border-black p-3'
                     id = 'swapDetails'
                     name = 'swapDetails'
@@ -80,6 +175,7 @@ const UploadListing = () => {
 
                 < label for = 'title' className='font-bold text-xl pt-4 pb-1'>Title</label>
                 <textarea
+                    value={formData.title}
                     className='w-full border-2 border-black p-3'
                     id = 'title'
                     name = 'title'
@@ -93,6 +189,7 @@ const UploadListing = () => {
                 
                 <h3 className='font-light'>Size</h3>
                 <textarea
+                    value={formData.size}
                     className='w-full border-2 border-black p-3'
                     id = 'size'
                     name = 'size'
@@ -103,6 +200,7 @@ const UploadListing = () => {
                 />
 
                 <Dropdown
+                value = {formData.Category}
                 options= {['Mens', 'Womens', 'Unisex', 'Accessories']}
                 title='Category'
                 setFormData = {setFormData}
@@ -110,20 +208,23 @@ const UploadListing = () => {
                 />
 
                 <Dropdown
-                options= {['Jeans', 'Trousers', 'Jackets', 'Tops', 'Shorts', 'Skirts', "Shoes", "Other"]}
+                value = {formData.Subcategory}
+                options= {['Jeans', 'Trousers', 'Jackets', 'Tops', 'Shorts', 'Skirts']}
                 title='Subcategory'
                 setFormData = {setFormData}
                 formData = {formData}
                 />
 
                 <Dropdown
-                options= {['Levis', 'Dickies', "Carhart", "Nike", "Adidas", 'Other']}
+                value = {formData.Brand}
+                options= {['Levis', 'Gucci', 'Other']}
                 title='Brand'
                 setFormData = {setFormData}
                 formData = {formData}
                 />
 
                 <Dropdown
+                value = {formData.Condition}
                 options= {['Like new', 'Used-Excellent', 'Used-Good', "Used-Fair"]}
                 title='Condition'
                 setFormData = {setFormData}
@@ -134,6 +235,7 @@ const UploadListing = () => {
                 <h3 className='font-bold text-xl mt-3 my-3' >Extra Info</h3>
 
                 <Dropdown
+                value = {formData.Color}
                 options= {['Black', 'Blue', 'Red', "Orange", "Purple", "White", "Brown", "Other"]}
                 title='Color'
                 setFormData = {setFormData}
@@ -141,7 +243,8 @@ const UploadListing = () => {
                 />
 
                 <Dropdown
-                options= {['Sportswear', 'Casual', 'Retro', "Modern", "Indie", "vintage", "other"]}
+                value = {formData.Style}
+                options= {['Sportswear', 'Casual', 'Retro', "Modern", "Indie"]}
                 title='Style'
                 setFormData = {setFormData}
                 formData = {formData}
@@ -149,7 +252,8 @@ const UploadListing = () => {
 
 
 
-            <button onClick={handelSubmit} className=' bg-black  py-2 font-bold w-full text-white my-4'>Submit Listing</button>
+            <button onClick={handelSubmit} className=' bg-black  py-2 font-bold w-full text-white my-4'>Submit Changes</button>
+            <button onClick={handleDelete}  className=' border-2 border-black  py-2 font-bold w-full  '>Delete Listing</button>
 
             </form>
         </div>
@@ -157,4 +261,4 @@ const UploadListing = () => {
     )
 }
 
-export default UploadListing
+export default EditListing

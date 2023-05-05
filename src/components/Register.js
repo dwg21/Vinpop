@@ -17,6 +17,7 @@ const Register = () => {
         lastName: "",
         username: "",
         password: "",
+        location : "",
     });
 
     const [errMsg, setErrMsg] = useState(null);
@@ -27,12 +28,13 @@ const Register = () => {
 
     const RegisterSubmit = async (e) => {
         e.preventDefault(); //stops reloading page
-        const {firstName, lastName, email, username, password} = registerUser;
+        const {firstName, lastName, email, username, password, location} = registerUser;
         const registerUserJson = {
             name: firstName + ' ' + lastName, 
             email,
             username,
-            password
+            password,
+            location
         }
         console.log(registerUserJson)
         
@@ -43,14 +45,14 @@ const Register = () => {
                 {withCredentials: true}
                 )  
 
-            setRegisterUser({ name: '', email: '', password: '' });
+            setRegisterUser({ name: '', email: '', password: '', location: "" });
             navigate("/");
 
         } 
             
             catch (error) {
             setErrMsg(error.response.data.msg)
-            console.log({ text: error.response.data.msg });
+            console.log(error);
         }
         
     };
@@ -84,7 +86,19 @@ const Register = () => {
                     </div>
 
 
+
                 </div>
+
+
+                    <div className='w-[95%]'>
+                        <span className=' font-light '>Location</span>
+                        <input
+                                type='location'
+                                name = 'location'
+                                className='border-2  border-black w-full  px-4 py-2' 
+                                onChange={handleChange}
+                                />
+                    </div>
 
                 
                 <div className='w-[95%]'>
