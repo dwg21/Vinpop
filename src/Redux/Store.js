@@ -5,6 +5,7 @@ import listingReducer from './listingSlice'
 import userReducer from './userSlice'
 import favoriteSlice from './favoriteSlice';
 import offerSlice from './offerSlice';
+import searchSlice from './searchSlice';
 
 
 export default configureStore({
@@ -13,7 +14,8 @@ export default configureStore({
         listing: listingReducer,
         user: userReducer,
         favorite: favoriteSlice,
-        offer: offerSlice
+        offer: offerSlice,
+        search: searchSlice
     }
 
 

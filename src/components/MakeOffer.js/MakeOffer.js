@@ -1,8 +1,7 @@
 import React, { useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
 import {selectUserListings, getUserListingsStatus, fetchUserListings} from '../../Redux/listingSlice';
-import UserListings from '../User/UserListings';
 import UserSelection from './userSelection';
 import ServerApi from '../../serverApi/axios';
 
@@ -10,6 +9,7 @@ import ServerApi from '../../serverApi/axios';
 
 const MakeOffer = () => {
     const params = useParams();
+    const naviagte = useNavigate();
     const {id} = params;
     const dispatch = useDispatch();
     const userListings = useSelector(selectUserListings);
@@ -54,7 +54,9 @@ const MakeOffer = () => {
                 offer,
                 {headers: {'Content-Type': 'application/json'}}
             )
-            console.log(response)
+            naviagte('/');
+            window.location.reload(false);
+
 
         } catch (error) {
             console.log(error)

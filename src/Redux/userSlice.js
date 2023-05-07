@@ -50,7 +50,6 @@ const userSlice = createSlice( {
             .addCase(getCurrentUser.fulfilled, (state, action) => {
                 state.status = 'suceeded'
                 const {user} = action.payload ;
-                console.log(user)
                 if (user) {
                     state.user.name = user.name
                     state.user.loggedIn = true

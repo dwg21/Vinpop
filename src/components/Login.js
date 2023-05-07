@@ -68,7 +68,7 @@ const Login = () => {
 
             setLoginUser({ name: '', email: '', password: '' });
             navigate("/");
-
+            window.location.reload(false);
         } 
             
             catch (error) {

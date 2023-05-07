@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import {selectUser, addUserState} from '../../Redux/userSlice';
 
+import {changeParam } from '../../Redux/searchSlice';
+
+
 
 import {FaUserCircle} from 'react-icons/fa'
 
@@ -20,6 +23,19 @@ import {FaUserCircle} from 'react-icons/fa'
 const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const [searchTerms, setSearchTerms] = useState('');
+
+    const handleChange = (e) => {
+        setSearchTerms(e.target.value)
+    }
+
+    const handleSubmit = (event) => {
+        if (event.key === 'Enter') {
+            dispatch(changeParam(searchTerms))
+            navigate('/browseProducts') 
+        }
+    }
 
     const logout = async () => {
         
@@ -67,7 +83,7 @@ return (
                 <Link to ='/'><h2 className='font-extrabold text-red-500 text-2xl mr-6 '>VinSwap</h2></Link>
                 <div className='pl-2  border-2 justify-center items-center border-black	hidden md:flex'>
                     <AiOutlineSearch/>
-                    <input type="text"  placeholder="Search for items, brands, or styles.." className="flex w-[300px] py-2 px-1.5 font-epilogue font-normal text-[14px] placeholder:text-black dark:placeholder:text-[#4b5264] text-black dark:text-white bg-transparent outline-none	" />
+                    <input type="text" value = {searchTerms} onChange={handleChange} onKeyDown={handleSubmit} placeholder="Search for items, brands, or styles.." className="flex w-[300px] py-2 px-1.5 font-epilogue font-normal text-[14px] placeholder:text-black dark:placeholder:text-[#4b5264] text-black dark:text-white bg-transparent outline-none	" />
                 </div>
 
                 <div  className='flex'>
@@ -110,12 +126,12 @@ return (
                 <div  className='font-bold hover:bg-gray-900  hover:text-white py-3 px-4 cursor-pointer]'>Menswear</div>
             {      activeDropDown === 'menswear' &&         
                     <ul className='border w-[250px] absolute z-20  '>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Shop all</li>
-                        <li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Tops</li>
-                        <li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Bottoms</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Underwear</li>
-                        <li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Outerwear</li>
-                        <li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shoes</li>
+                        <Link to = '/browseProducts/mensAll'><li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Shop all</li></Link>
+                        <Link to ='/browseProducts/menstops'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Tops</li></Link>
+                        <Link to = '/browseProducts/mensbottoms'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Bottoms</li></Link>
+                        <Link to = '/browseProducts/mensjackets'><li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Jackets</li></Link>
+                        <Link to = '/browseProducts/mensshorts'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shorts</li></Link>
+                        <Link to = '/browseProducts/mensshoes'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shoes</li></Link>
                     </ul>
             }
             
@@ -124,12 +140,12 @@ return (
                 <div  className='font-bold hover:bg-gray-900 hover:text-white py-3 px-4 cursor-pointer'>Womenswear</div>
             {      activeDropDown === 'womenswear' &&         
                     <ul className='border w-[250px] absolute z-20 '>
-                        <li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shop all</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Tops</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Bottoms</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Underwear</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Outerwear</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Shoes</li>
+                        <Link to = '/browseProducts/womensAll'><li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Shop all</li></Link>
+                        <Link to ='/browseProducts/womenstops'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Tops</li></Link>
+                        <Link to = '/browseProducts/womensbottoms'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Bottoms</li></Link>
+                        <Link to = '/browseProducts/womensjackets'><li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Jackets</li></Link>
+                        <Link to = '/browseProducts/womensshorts'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shorts</li></Link>
+                        <Link to = '/browseProducts/womensshoes'><li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shoes</li></Link>
                     </ul>
             }
             

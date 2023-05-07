@@ -1,26 +1,30 @@
 import {useEffect, useState} from 'react';
-import {AiOutlineHeart} from 'react-icons/ai'
-import { Link } from 'react-router-dom';
-import ServerApi from '../../serverApi/axios';
+import { useParams} from 'react-router-dom';
 
-import {selectAllListings, getListingsStatus, getListingsError, fetchCart, fetchAllLisings} from '../../Redux/listingSlice';
+import {selectAllListings, getListingsStatus, fetchAllLisings} from '../../Redux/listingSlice';
+import { selectSearchState, changeParam } from '../../Redux/searchSlice';
+
 import { useSelector, useDispatch } from 'react-redux';
 import GridImage from './GridImage';
 import { selectFavorites } from '../../Redux/favoriteSlice';
 import { getFavoriteStatus } from '../../Redux/favoriteSlice';
 import {getuserFavorites} from '../../Redux/favoriteSlice';
 
-const UserDataUrl = 'api/v1/listing'
 
 
 
-const ProductGrid = () => {   
+const ProductGrid = ({filters, setFilters}) => {   
     const dispatch = useDispatch();
+    const {param} = useParams();
     const listings = useSelector(selectAllListings);
     const listingStatus = useSelector(getListingsStatus);
+    const searchParam = useSelector(selectSearchState);
 
     const favorites = useSelector(selectFavorites);
     const favoritesStatus = useSelector(getFavoriteStatus);
+
+
+    //for filter options
 
     useEffect(() => {
         if (listingStatus === 'idle') {
@@ -36,12 +40,126 @@ const ProductGrid = () => {
         }
     }, [favorites, dispatch])
 
-    console.log(favorites)
-    console.log(favoritesStatus)
+
+    
+
+    // const mensListings = listings.filter((listing) => listing.Category === 'Mens' || listing.Category === 'Unisex' );
+    // const womensListings = listings.filter((listing) => listing.Category === 'Womens' || listing.Category === 'Unisex' );
+
+    // let categoryListings = listings ; 
+
+    if (param) {
+        if (param[0] === 'm' && filters.Category !== 'Mens') {
+            setFilters({...filters, Category: "Mens"}) 
+            console.log(filters)
+        } else if (param[0] === 'w' && filters.Category !== 'Womens') {
+            setFilters({...filters, Category: "Womens"})
+            console.log(filters)
+
+        } 
+    }
+
+
+
+    if (param) {
+        if (param.includes('All') && filters.Subcategory !== '') {
+            setFilters({...filters, Subcategory: ''}) 
+        }
+        if (param.includes('tops') && filters.Subcategory !== 'Tops') {
+            setFilters({...filters, Subcategory: "Tops"}) 
+        } if (param.includes('bottoms') && filters.Subcategory !== 'Jeans') {
+            setFilters({...filters, Subcategory: "Jeans"}) 
+        } if (param.includes('jacket') && filters.Subcategory !== 'Jackets') {
+            setFilters({...filters, Subcategory: "Jackets"}) 
+        } if (param.includes('shorts') && filters.Subcategory !== 'Shorts') {
+            setFilters({...filters, Subcategory: "Shorts"}) 
+        } if (param.includes('shoes') && filters.Subcategory !== 'Shoes') {
+            setFilters({...filters, Subcategory: "Shoes"}) 
+        }
+    }
+
+
+    console.log(searchParam)
+
+
+    let searchResults ;
+    if (searchParam) {
+        searchResults = listings.filter((listing) => {
+            console.log(searchParam)
+            if (listing.Category === searchParam ) {
+                return true
+            } 
+    
+            if (listing.SubCategory === searchParam) {
+                return true
+            }
+    
+            if (listing.size == searchParam) {
+                return true
+            }
+    
+            if (listing.description.includes(searchParam)) {
+                return true
+            }
+    
+            if (listing.title.includes(searchParam)) {
+                return true
+            }
+    
+            if (listing.Brand.includes(searchParam)) {
+                return true
+            } else {
+                console.log('ygyg')
+            }
+        })
+        
+    }
 
 
 
     
+    let FilteredResults
+    if (searchResults) {
+        FilteredResults = searchResults
+    } else {
+        FilteredResults = listings
+    }
+
+
+    for (let k in filters) {
+
+        if (k === 'Category' && filters[k]) {
+            const categoryFiltered = FilteredResults.filter((listing) => listing.Category === filters[k] );
+            const unisexClothes = FilteredResults.filter((listing) => listing.Category === 'Unisex' );
+            const filteredWithUnisex = [...unisexClothes, ...categoryFiltered]
+            FilteredResults = filteredWithUnisex
+        } 
+        
+        if (k === 'Subcategory'  && filters[k] ) {
+            const subcategoryFiltered = FilteredResults.filter((listing) => listing.Subcategory === filters[k]);
+            FilteredResults = subcategoryFiltered
+            console.log(FilteredResults)
+        }  
+        
+        if (k === 'Size'  && filters[k]) {
+            console.log(k)
+            const sizeFiltered = FilteredResults.filter((listing) => listing.size === filters[k]);
+            FilteredResults = sizeFiltered
+            console.log(FilteredResults)
+        }
+
+        if (k === 'Color'  && filters[k]) {
+            console.log(k)
+            const colorFiltered = FilteredResults.filter((listing) => listing.Color === filters[k]);
+            FilteredResults = colorFiltered
+            console.log(FilteredResults)
+        } 
+
+    }
+
+
+
+
     //Changes page content based on status of request for cart data results
 
     let content ; 
@@ -49,7 +167,7 @@ const ProductGrid = () => {
     if (listingStatus === 'loading') {
         content = <p>Loading...</p>
     } else if (listingStatus === 'suceeded' && listings) {
-        content =  listings.map((item, index) => (
+        content =  FilteredResults.map((item, index) => (
             <GridImage 
                 item={item}
                 index = {index}
