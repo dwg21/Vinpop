@@ -5,16 +5,45 @@ import bag from '../data/images/bag.jpeg';
 import homepic1 from '../data/images/findstyle.jpg';
 import homepic2 from '../data/images/homepagepic2.jpeg'
 
-import deals from '../data/images/deals.jpeg'
 import shirts from '../data/images/shirts.jpeg'
 import dresses from '../data/images/dresses.jpeg'
 import jewellery from '../data/images/jewellery.jpeg'
-import { Link } from 'react-router-dom';
+
+import vintage from '../data/images/vintage.jpeg';
+import sportswear from '../data/images/sportswear.jpeg';
+import sunglasses from '../data/images/sunglasses.jpeg';
+
+import carharrt from '../data/images/carharrt.webp';
+import dickies from '../data/images/Dickies.jpeg';
+import levis from '../data/images/levis.webp';
+import leather from '../data/images/leather.jpeg';
+import watch from '../data/images/watch.jpeg';
+
+
+
+
+
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeParam } from '../Redux/searchSlice';
 
 
 
 
 const Home = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
+    const handleSearch = (searchTerm) => {
+        dispatch(changeParam(searchTerm))
+        navigate('/browseProducts') 
+    
+}
+
+
+
+
 return (
     <div className='lg:flex lg:justify-center'>
         <div className='p-5 flex flex-col lg:max-w-[75%] '>
@@ -40,21 +69,21 @@ return (
             <div className='pb-5'>
                 <p className='font-bold mb-2'>TRENDING ON VINPOP</p>
                 <div className='grid grid-cols-2 sm:grid-cols-4 space-x-4'>
-                    <Link to='/browseProducts'><div className='pl-4'>
-                        <img src= {deals} alt = "" />
-                        <p className='font-bold text-lg text-center p-3'>Deals</p>
+                    <Link onClick={() => handleSearch('vintage')} to='/browseProducts'><div className='pl-4'>
+                        <img src= {vintage} alt = "" />
+                        <p className='font-bold text-lg text-center p-3'>Vintage</p>
                     </div></Link>
-                    <Link to='/browseProducts'><div>
-                        <img src= {shirts} alt = '' />
-                        <p className='font-bold text-lg text-center p-3'>Shirts</p>
+                    <Link onClick={() => handleSearch('Sportswear')} to='/browseProducts'><div>
+                        <img src= {sportswear} alt = '' />
+                        <p className='font-bold text-lg text-center p-3'>Sportswear</p>
                     </div></Link>
-                    <Link to='/browseProducts'><div>
-                        <img src= {dresses} alt = '' />
-                        <p className='font-bold text-lg text-center p-3'>dresses</p>
+                    <Link onClick={() => handleSearch('Sunglasses')} to='/browseProducts'><div>
+                        <img src= {sunglasses} alt = '' />
+                        <p className='font-bold text-lg text-center p-3'>Sunglasses</p>
                     </div></Link>
-                    <Link to='/browseProducts'><div>
+                    <Link onClick={() => handleSearch('Accessories')} to='/browseProducts'><div>
                         <img src= {jewellery} alt = '' />
-                        <p className='font-bold text-lg text-center p-3'>Jewellery</p>
+                        <p className='font-bold text-lg text-center p-3'>Accessories</p>
                     </div></Link>
 
                 </div>
@@ -62,29 +91,29 @@ return (
             
             <EditSection/>
 
-            <div className='mt-8 overflow-x-scroll '>
+            <div className='my-8 overflow-x-scroll'>
                 <p className='font-bold mb-3'>Top Searches</p>
-                <ul className=' space-x-4 flex overflow-y-scroll no-scroll-bar'>
-                    <li >
-                        <img src = {bag} className='rounded-[50%] min-w-[150px]'/>
-                        <p className=' text-center font-bold mt-2'>Jaded London</p>
+                <ul className=' space-x-4 flex overflow-y-scroll no-scroll-bar md:justify-center '>
+                    <li onClick={() => handleSearch('carhart')} >
+                        <img src = {carharrt} className='cursor-pointer  rounded-[50%] min-w-[120px] max-w-[200px] aspect-square object-cover	'/>
+                        <p className=' text-center font-bold mt-2'>Carharrt</p>
                     </li>
-                    <li>
-                        <img src = {bag} className='rounded-[50%] min-w-[150px]'/>
-                        <p className=' text-center font-bold mt-2'>Jaded London</p>
+                    <li onClick={() => handleSearch('dickies')}>
+                        <img src = {dickies} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	'/>
+                        <p className=' text-center font-bold mt-2'>Dickies</p>
                     </li>
-                    <li>
-                        <img src = {bag} className='rounded-[50%] min-w-[150px]'/>
-                        <p className=' text-center font-bold mt-2'>Jaded London</p>
+                    <li onClick={() => handleSearch('levis')}>
+                        <img src = {levis} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	'/>
+                        <p className=' text-center font-bold mt-2'>Levis</p>
                     </li>
-                    <li>
-                        <img src = {bag} className='rounded-[50%] min-w-[150px]'/>
-                        <p className=' text-center font-bold mt-2'>Jaded London</p>
+                    <li onClick={() => handleSearch('leather')}>
+                        <img src = {leather} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	'/>
+                        <p className=' text-center font-bold mt-2'>Leather </p>
                     </li>
 
-                    <li>
-                        <img src = {bag} className='rounded-[50%] min-w-[150px]'/>
-                        <p className=' text-center font-bold mt-2'>Jaded London</p>
+                    <li onClick={() => handleSearch('watch')}>
+                        <img src = {watch} className=' cursor-pointer rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	 '/>
+                        <p className=' text-center font-bold mt-2'>Watches</p>
                     </li>
                 </ul>
 
@@ -95,7 +124,7 @@ return (
                 <div>
                     <h3 className='my-3 font-bold text-lg sm:mx-5'>Find Your Style</h3>
                     <p className='my-4  sm:mx-5'>Shop the biggest brands you know and love. Discover independent brands making waves and the creators behind them. Whatever you're into, find the item and the seller for you on Depop.</p>
-                    <button className='bg-black px-4 py-2.5 mouse-highlight  sm:mx-5 text-white font-bold'>Shop now</button>                    
+                    <Link to ='/browseProducts'><button className='bg-black px-4 py-2.5 mouse-highlight  sm:mx-5 text-white font-bold'>Shop now</button></Link>                    
                 </div>
             </div>
 
@@ -104,7 +133,7 @@ return (
                 <div>
                     <h3 className='my-3 font-bold text-lg sm:mx-5'>Sell Your way</h3>
                     <p className='my-4  sm:mx-5'>Shop the biggest brands you know and love. Discover independent brands making waves and the creators behind them. Whatever you're into, find the item and the seller for you on Depop.</p>
-                    <button className='bg-black px-4 py-2.5 mouse-highlight  sm:mx-5 text-white font-bold'>Shop now</button>                    
+                    <Link to ='/browseProducts'><button className='bg-black px-4 py-2.5 mouse-highlight  sm:mx-5 text-white font-bold'>Shop now</button></Link>                    
                 </div>
             </div>
 

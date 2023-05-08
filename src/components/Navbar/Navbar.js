@@ -151,19 +151,8 @@ return (
             
             </div>
 
-            <div className='w-[100px]' onMouseEnter={() => setActiveDropdown('brands')} onMouseLeave={() => setActiveDropdown(null)}>
-                <div  className='font-bold hover:bg-gray-900	 hover:text-white py-3 px-4 cursor-pointer'>Brands</div>
-            {      activeDropDown === 'brands' &&         
-                    <ul className='border w-[250px] absolute'>
-                        <li className='px-3 py-3 border-b-2 relative  bg-white hover:bg-gray-900	 hover:text-white'>Shop all</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Tops</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Bottoms</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Underwear</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Outerwear</li>
-                        <li className='px-3 py-3 border-b-2 relative bg-white hover:bg-gray-900	 hover:text-white'>Shoes</li>
-                    </ul>
-            }
-            
+            <div className='w-[130px]' onMouseEnter={() => setActiveDropdown('brands')} onMouseLeave={() => setActiveDropdown(null)}>
+                <Link to = '/browseProducts/Accessories'><div  className='font-bold hover:bg-gray-900	 hover:text-white py-3 px-4 cursor-pointer'>Accessories</div></Link>
             </div>
             
 

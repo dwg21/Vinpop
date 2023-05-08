@@ -5,7 +5,7 @@ const searchSlice = createSlice( {
     name: 'searchParam',
 
     initialState: {
-        searchParam: "Women"
+        searchParam: null
     },
 
     reducers: {

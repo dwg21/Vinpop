@@ -5,7 +5,8 @@ import ServerApi from '../../serverApi/axios';
 
 import ImageGallery from './ImageGallery';
 
-import profile from '../../data/images/profile.jpeg';
+import profile from '../../data/images/emptyprofile.webp';
+
 
 
 import InfoSmallDevices from './infoSmallDevices';

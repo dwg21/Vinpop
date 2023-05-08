@@ -4,7 +4,13 @@ require('express-async-errors');
 
 const express = require('express');
 const app = express();
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
 // rest of the packages
+
 
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');

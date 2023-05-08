@@ -28,6 +28,6 @@ router.route('/favorites')
   .post(authenticateUser, addFavorite)
   .delete(authenticateUser, removeFavorite)
 
-router.route('/:id').get(authenticateUser, getSingleUser);
+router.route('/:id').get( getSingleUser);
 
 module.exports = router;

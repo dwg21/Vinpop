@@ -40,9 +40,9 @@ const Hamburger = ({setHamburgerMenuActive, user, logout}) => {
         <div>
             <h2 className=' my-4 text-lg font-bold'>Browse Vinpop</h2>
             <ul className='space-y-4'>
-                <div className='border-b-2 flex justify-between py-2'><li>Menswear</li> <AiOutlineArrowRight className=' text-xl' /></div>
-                <div className='border-b-2 flex justify-between py-2'><li>Womenswear</li> <AiOutlineArrowRight className=' text-xl' /></div>
-                <div className='border-b-2 flex justify-between py-2'><li>Brands</li> <AiOutlineArrowRight className=' text-xl' /></div>
+                <Link onClick={() => setHamburgerMenuActive(false)} to = '/browseProducts/mens'><div className='border-b-2 flex justify-between py-2'><li>Menswear</li> <AiOutlineArrowRight className=' text-xl' /></div></Link>
+                <Link onClick={() => setHamburgerMenuActive(false)} to = '/browseProducts/womens'><div className='border-b-2 flex justify-between py-2'><li>Womenswear</li> <AiOutlineArrowRight className=' text-xl' /></div></Link>
+                <Link onClick={() => setHamburgerMenuActive(false)} to = '/browseProducts/Accessories'><div className='border-b-2 flex justify-between py-2'><li>Accessories</li> <AiOutlineArrowRight className=' text-xl' /></div></Link>
                 <div className='border-b-2 flex justify-between py-2'><li>Beauty</li> <AiOutlineArrowRight className=' text-xl' /></div>
                 <div className='border-b-2 flex justify-between py-2'><li>More</li> <AiOutlineArrowRight className=' text-xl' /></div>
             </ul>

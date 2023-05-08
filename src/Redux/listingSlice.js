@@ -47,44 +47,6 @@ export const fetchUserListings = createAsyncThunk(
     }
 )
 
-// export const fetchListingDetails = createAsyncThunk(
-//     'listing/fetchListingDetails', async () => {
-//         try {
-//             const {data} = await ServerApi.get(
-//                 `/api/v1/listing/${id}`,
-//                 {headers: {'Content-Type': 'application/json'}}
-//             )
-//                 return response.data.Listings
-                
-//         } catch (error) {
-//             return error.message
-//         }
-//     }
-// )
-
-// const loadListing = async () => {
-//     try {
-//         const {data} = await ServerApi.get(
-//             `/api/v1/listing/${id}`,
-//             {headers: {'Content-Type': 'application/json'}}
-//         )
-//         const {SingleListing} = data  ;
-//         setLisitingData(SingleListing)
-
-//         if (SingleListing) {
-//             const Sellerdata = await ServerApi.get(
-//             `/api/v1/users/${SingleListing.sellerId}`,
-//             {headers: {'Content-Type': 'application/json'}}
-//         )
-//         setSellerData(Sellerdata.data.user)
-//         }
-
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-
 
 export const createListing = createAsyncThunk(
     "listing/createListing",

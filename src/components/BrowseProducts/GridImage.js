@@ -17,7 +17,6 @@ const GridImage = ({item, index, favorites }) => {
     const checkLikes = () => {
 
         if (favorites.includes(item.id) ) {
-            console.log('hello')
             setListingLike(true)
         }
     }
@@ -50,9 +49,7 @@ const GridImage = ({item, index, favorites }) => {
                 <AiOutlineHeart onClick={() => handleLike(item.id)} className='text-2xl absolute bottom-1 right-1  cursor-pointer text-white  '/> :
                 <AiFillHeart onClick={() => handleDislike(item.id)}  className='text-2xl absolute bottom-1 right-1  cursor-pointer text-red-800' />
                 }
-                {/* {likes.map((item, index) => (
-                    <p>likes</p>
-                ))} */}
+
         </div>
     )
     }

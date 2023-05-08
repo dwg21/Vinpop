@@ -28,7 +28,7 @@ export const addFavorite = createAsyncThunk(
         const response = await serverApi.post(
             `api/v1/users/favorites`,
             values,
-            {headers: {'Content-Type': 'multipart/form-data'}}
+            {headers: {'Content-Type': 'application/json'}}
             );
         console.log(response.data)
         return response.data;
@@ -44,7 +44,7 @@ export const removeFavorite = createAsyncThunk(
             console.log(value)
         const response = await serverApi.delete(
             `api/v1/users/favorites?listingId=${value}`,
-            {headers: {'Content-Type': 'multipart/form-data'}}
+            {headers: {'Content-Type': 'application/json'}}
             );
         console.log(response.data)
         return response.data;

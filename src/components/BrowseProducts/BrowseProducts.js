@@ -11,6 +11,7 @@ import FilterMenu from './FilterMenu'
 import ProductGrid from './ProductGrid';
 
 import {AiOutlineDown} from 'react-icons/ai'
+import {MdOutlineCancel} from 'react-icons/md'
 
 import {selectSearchState, changeParam} from '../../Redux/searchSlice';
 
@@ -102,7 +103,7 @@ return (
             filterMenuActive && <FilterMenu toggleMenu = {setFilterMenuActive} filters = {filters} setFilters={setFilters} />
         }
 
-{        searchParam && <div className= 'flex items-center space-x-3'>
+{        searchParam && <div className= 'flex items-center space-x-3 mb-4'>
             <p className ='font-bold text-xl'>Search Results: </p>
             <span className = ' text-xl pr-3 '>{searchParam}</span>
             <span onClick = {() => handleClearResults()} className = 'border-2 border-black px-2 py-1 rounded-md  cursor-pointer'>Clear Results</span>
@@ -110,10 +111,10 @@ return (
 
 
         <div className='border-b-2 pb-4 flex gap-2'>
-            <h2 className='font-bold text-2xl mb-1'>{filters.Category}</h2>
-            <h2 className='font-bold text-2xl mb-1'>{filters.Subcategory}</h2>
-            <h2 className='font-bold text-2xl mb-1'>{filters.Size}</h2>
-            <h2 className='font-bold text-2xl mb-1'>{filters.Color}</h2>
+            {filters.Category && <div onClick={() => handleCategoryClick('')} className='font-bold text-2xl mb-1 border-2 border-black px-3 py-1 rounded-lg flex items-center gap-2'>{filters.Category} <MdOutlineCancel /> </div>}
+            {filters.Subcategory && <div onClick={() => handleSubcategoryClick('')} className='font-bold text-2xl mb-1 border-2 border-black px-3 py-1 rounded-lg flex items-center gap-2'>{filters.Subcategory} <MdOutlineCancel /> </div>}
+            {filters.Size && <div onClick={() => handleSizeClick('')} className='font-bold text-2xl mb-1 border-2 border-black px-3 py-1 rounded-lg flex items-center gap-2'>{filters.Size} <MdOutlineCancel /> </div>}
+            {filters.Color && <div onClick={() => handleColorClick('')} className='font-bold text-2xl mb-1 border-2 border-black px-3 py-1 rounded-lg flex items-center gap-2'>{filters.Color} <MdOutlineCancel /> </div>}
 
         </div>
 
@@ -154,7 +155,7 @@ return (
                             <li onClick={() => handleCategoryClick('Mens')}  className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer    `} >All</li>
                             <li onClick={() => handleCategoryClick('Mens')}  className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer    `} >Mens</li>
                             <li onClick={() => handleCategoryClick('Womens')}  className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer   `}>Womens</li>
-                            <li onClick={() => handleCategoryClick('Accesories')}  className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer `}>Accesories</li>
+                            <li onClick={() => handleCategoryClick('Accessories')}  className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer `}>Accessories</li>
                 </ul>}
             </div>
 

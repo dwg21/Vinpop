@@ -21,8 +21,17 @@ const SearchMenu = ({setSearchMenuActive}) => {
             setSearchMenuActive(false)
         }
 
-        //close menu
     }
+
+    const handleSuggestion = (suggestion) => {
+            dispatch(changeParam(suggestion))
+            navigate('/browseProducts') 
+            setSearchMenuActive(false)
+        
+    }
+
+
+
 
 
     
@@ -41,10 +50,10 @@ const SearchMenu = ({setSearchMenuActive}) => {
         <div className='mt-2'>
             <p className='text-zinc-500	'>Popular</p>
             <ul className='mt-1 '>
-                <li className='px-3 py-2 hover:bg-gray-900 hover:text-white'>Mens shorts</li>
-                <li className='px-3 py-2 hover:bg-gray-900 hover:text-white'>Jeans</li>
-                <li className='px-3 py-2 hover:bg-gray-900 hover:text-white'>Leather Jacket</li>
-                <li className='px-3 py-2 hover:bg-gray-900 hover:text-white'>Mens Boots</li>
+                <li onClick={() => handleSuggestion('SportsWear')} className=' cursor-pointer px-3 py-2 hover:bg-gray-900 hover:text-white'>SportsWear</li>
+                <li onClick={() => handleSuggestion('Nike')} className=' cursor-pointer px-3 py-2 hover:bg-gray-900 hover:text-white'>Nike</li>
+                <li onClick={() => handleSuggestion('Leather')} className=' cursor-pointer px-3 py-2 hover:bg-gray-900 hover:text-white'>Leather</li>
+                <li onClick={() => handleSuggestion('Jeans')} className=' cursor-pointer px-3 py-2 hover:bg-gray-900 hover:text-white'>Jeans</li>
             </ul>
         </div>
 

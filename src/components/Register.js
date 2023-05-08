@@ -47,7 +47,7 @@ const Register = () => {
 
             setRegisterUser({ name: '', email: '', password: '', location: "" });
             navigate("/");
-
+            window.location.reload(false);
         } 
             
             catch (error) {

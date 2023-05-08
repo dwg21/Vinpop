@@ -71,7 +71,7 @@ const FilterMenu = ({toggleMenu, filters, setFilters}) => {
                         <li onClick={() => handleClick('Category', '')} className=' cursor-pointer flex items-center gap-2 text-xl'>All <AiOutlineArrowRight className=' text-lg' />  </li> 
                         <li onClick={() => handleClick('Category', 'Mens')}  className=' flex items-center gap-2 text-xl cursor-pointer'>Mens <AiOutlineArrowRight className=' text-lg' />  </li> 
                         <li  onClick={() => handleClick('Category', 'Womens')} className=' cursor-pointer flex items-center gap-2 text-xl'>Womens <AiOutlineArrowRight className=' text-lg' />  </li> 
-                        <li  onClick={() => handleClick('Category', 'Accesories')} className=' cursor-pointer flex items-center gap-2 text-xl'>Accesories <AiOutlineArrowRight className=' text-lg' />  </li> 
+                        <li  onClick={() => handleClick('Category', 'Accessories')} className=' cursor-pointer flex items-center gap-2 text-xl'>Accessories <AiOutlineArrowRight className=' text-lg' />  </li> 
                     </ul>
                 </div>
                 <div className='border-b-2 flex justify-between py-2  font-bold text-2xl'><li>Subcategory</li> </div>

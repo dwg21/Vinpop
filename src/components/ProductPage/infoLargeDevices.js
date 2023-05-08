@@ -1,9 +1,9 @@
 import React from 'react';
 import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai';
 import {RiStarSFill, RiStarSLine} from 'react-icons/ri';
-import {BsFillTagFill, BsLightningChargeFill, BsShieldCheck}  from 'react-icons/bs';
+import { BsShieldCheck}  from 'react-icons/bs';
 import {IoMdShirt} from 'react-icons/io';
-import profile from '../../data/images/profile.jpeg';
+import profile from '../../data/images/emptyprofile.webp';
 
 // redux imports 
 import { useDispatch } from 'react-redux';

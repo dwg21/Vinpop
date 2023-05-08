@@ -122,7 +122,6 @@ const Chat = () => {
         }
     }
 
-    console.log(typeOfOffer)
 
 
 
@@ -133,14 +132,14 @@ const Chat = () => {
 
     return (
         
-        <div className=' relative h-[95vh] md:h-[91vh]'>
+        <div className=' relative h-[95vh] md:h-[91vh  '>
 { listingDetails2 ?       
-            <div className='flex flex-col b-4 border-black justify-between '>
+            <div className='flex flex-col b-4  justify-between  h-full '>
             
-                <div className='productSection p-5 flex  gap-3 border-b-2  justify-center items-center'>
+                <div className='productSection p-5 flex  gap-3 border-b-2  justify-center items-center h-full'>
     
                     <Link to ={`/listing/${offerDetails.offerListingId}`}><img className='h-[200px]' src = {listingDetails.image1} /></Link>
-                    <div>
+                    <div className='hidden sm:block'>
                         <p className=' text-center mb-4 font-bold'>Swap</p>
                         <GrPowerCycle className='text-2xl mx-8'/>
                     </div>
@@ -152,14 +151,14 @@ const Chat = () => {
 
 
                 
-                <div className='ChatSection p-5 overflow-y-scroll h-[500px] border-2 '>
+                <div className='ChatSection  mt-4 h-full overflow-y-scroll '>
                 <Message 
                 messages={offerDetails.chat} 
                 /> 
                 </div>
 
-                <div className='listing absolute bottom-0 w-full'>
-                        <div className='w-full bg-white border-2 justify-between items-center border-black  flex'>
+                <div className='listing absolute bottom-0 w-full '>
+                        <div className='w-full bg-white border-2 justify-between items-center border-black flex '>
                             <input
                                 value = {message}
                                 name='message'

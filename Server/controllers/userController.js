@@ -72,14 +72,21 @@ const viewFavorites = async (req, res) => {
 
 const addFavorite = async (req, res) => {
   const {listingId} = req.body;
-  console.log(listingId)
+  console.log(listingId);
+
   const user = await User.findOne({ _id: req.user.userId });
   if (!user) {
     throw new CustomError.NotFoundError(`No user with id : ${req.params.id}`);
   }
+
   user.favorites = [...user.favorites, listingId];
-  await user.save()
+
+  await user.save();
+  
   res.status(StatusCodes.OK).json({user});
+
+
+
 }
 
 const removeFavorite = async (req, res) => {
@@ -89,6 +96,7 @@ const removeFavorite = async (req, res) => {
   if (!user) {
     throw new CustomError.NotFoundError(`No user with id : ${req.params.id}`);
   }
+
   user.favorites = user.favorites.filter(listing => listing !== listingId);
   await user.save()
 

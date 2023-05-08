@@ -105,7 +105,8 @@ const EditListing = () => {
                 {headers: {'Content-Type': 'application/json'}}
             )
 
-            navigate(`/`)
+            navigate("/");
+            window.location.reload(false);
 
             
 
@@ -121,8 +122,8 @@ const EditListing = () => {
                 `/api/v1/listing/${id}`,
                 {headers: {'Content-Type': 'application/json'}}
             )
-
-            navigate(`/`)
+            navigate("/");
+            window.location.reload(false);
 
         } catch (error) {
             console.log(error)

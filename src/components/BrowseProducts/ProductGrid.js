@@ -51,12 +51,12 @@ const ProductGrid = ({filters, setFilters}) => {
     if (param) {
         if (param[0] === 'm' && filters.Category !== 'Mens') {
             setFilters({...filters, Category: "Mens"}) 
-            console.log(filters)
         } else if (param[0] === 'w' && filters.Category !== 'Womens') {
             setFilters({...filters, Category: "Womens"})
-            console.log(filters)
 
-        } 
+        } else if (param === 'Accessories' && filters.Category !== 'Accessories') {
+            setFilters({...filters, Category: "Accessories"})
+        }
     }
 
 
@@ -85,7 +85,6 @@ const ProductGrid = ({filters, setFilters}) => {
     let searchResults ;
     if (searchParam) {
         searchResults = listings.filter((listing) => {
-            console.log(searchParam)
             if (listing.Category === searchParam ) {
                 return true
             } 
@@ -98,7 +97,7 @@ const ProductGrid = ({filters, setFilters}) => {
                 return true
             }
     
-            if (listing.description.includes(searchParam)) {
+            if (listing.description.toLowerCase().includes(searchParam.toLowerCase())) {
                 return true
             }
     
@@ -108,9 +107,7 @@ const ProductGrid = ({filters, setFilters}) => {
     
             if (listing.Brand.includes(searchParam)) {
                 return true
-            } else {
-                console.log('ygyg')
-            }
+            } 
         })
         
     }
@@ -131,8 +128,13 @@ const ProductGrid = ({filters, setFilters}) => {
         if (k === 'Category' && filters[k]) {
             const categoryFiltered = FilteredResults.filter((listing) => listing.Category === filters[k] );
             const unisexClothes = FilteredResults.filter((listing) => listing.Category === 'Unisex' );
-            const filteredWithUnisex = [...unisexClothes, ...categoryFiltered]
-            FilteredResults = filteredWithUnisex
+            if (filters[k] === 'Mens' || filters[k] === 'Womens' ) {
+                const filteredWithUnisex = [...unisexClothes, ...categoryFiltered]
+                FilteredResults = filteredWithUnisex              
+            } else {
+                FilteredResults = categoryFiltered
+            }
+
         } 
         
         if (k === 'Subcategory'  && filters[k] ) {
