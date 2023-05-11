@@ -1,9 +1,10 @@
 import axios from 'axios'; 
 
 axios.defaults.withCredentials = true
+// baseURL:'http://localhost:5000/'
 
 const ServerApi = axios.create({
-    baseURL:'http://localhost:5000/',
+    baseURL:'https://vinswap-server.onrender.com',
     withCredentials: true,
 
 })
