@@ -83,7 +83,9 @@ const ProductGrid = ({filters, setFilters}) => {
 
 
     let searchResults ;
-    if (searchParam) {
+
+
+    if (searchParam && listings) {
         searchResults = listings.filter((listing) => {
             if (listing.Category === searchParam ) {
                 return true
@@ -114,12 +116,14 @@ const ProductGrid = ({filters, setFilters}) => {
 
 
 
-    
-    let FilteredResults
-    if (searchResults) {
-        FilteredResults = searchResults
-    } else {
-        FilteredResults = listings
+    if (listings) {
+
+        let FilteredResults
+        if (searchResults) {
+            FilteredResults = searchResults
+        } else {
+            FilteredResults = listings
+        }
     }
 
 
@@ -183,9 +187,10 @@ const ProductGrid = ({filters, setFilters}) => {
 
     return (
     <div>
-        <div className='py-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4'>
+
+{      listings && <div className='py-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4'>
             {content}
-        </div>  
+        </div> } 
     </div>
     )       
     
