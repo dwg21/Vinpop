@@ -17,8 +17,10 @@ const EditSection = () => {
         }
     }, [listings, dispatch]);
 
-    if (listings.length > 14) {
-        console.log(listings.length)
+    console.log(listingStatus)
+
+
+    if (listingStatus === 'suceeded') {
         
         return (
             <div>
@@ -26,7 +28,7 @@ const EditSection = () => {
                     <div className=' grid grid-cols-3 gap-3 sm:grid-cols-6'>
                         
                     {
-                        listings && listings.slice(0,12).map((item, index) => (
+                        listings.slice(0,12).map((item, index) => (
                         <Link to = {`/listing/${item._id}`}>
                             <li className=' list-none'>
                                 <img id={index} className=' mouse-highlight cursor-pointer' src= {item.image1}/> 

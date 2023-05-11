@@ -87,8 +87,10 @@ const listingSlice = createSlice( {
             })
 
             .addCase(fetchAllLisings.fulfilled, (state, action) => {
-                state.status = 'suceeded'
-                
+                console.log(action.payload)
+                if (action.payload !== 'Network Error') {
+                    state.status = 'suceeded'
+                }
                 const LisitingArray = action.payload ;
                 state.listings = LisitingArray;
             })
