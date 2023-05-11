@@ -4,7 +4,7 @@ axios.defaults.withCredentials = true
 // baseURL:'http://localhost:5000/'
 
 const ServerApi = axios.create({
-    baseURL:'https://vinswap-server.onrender.com',
+    baseURL:'www.server.vinswap.lat',
     withCredentials: true,
 
 })
