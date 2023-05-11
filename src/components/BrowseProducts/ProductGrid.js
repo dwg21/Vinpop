@@ -116,14 +116,11 @@ const ProductGrid = ({filters, setFilters}) => {
 
 
 
-    if (listings) {
-
-        let FilteredResults
-        if (searchResults) {
-            FilteredResults = searchResults
-        } else {
-            FilteredResults = listings
-        }
+    let FilteredResults
+    if (searchResults) {
+        FilteredResults = searchResults
+    } else {
+        FilteredResults = listings
     }
 
 
