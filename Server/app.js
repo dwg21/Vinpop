@@ -49,7 +49,7 @@ app.set('trust proxy', 1);
 // );
 // app.use(helmet());
 app.use(cors({
-    origin:['https://vinswap.onrender.com', 'https://vinswap.lat/'],
+    origin: 'https://vinswap.lat/',
     credentials: true
 }));
 // app.use(xss());
