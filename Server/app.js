@@ -37,7 +37,10 @@ const offerRoute  = require('./routes/offerRoutes');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
-// app.set('trust proxy', 1);
+
+app.set('trust proxy', 1);
+
+
 // app.use(
 //   rateLimiter({
 //     windowMs: 15 * 60 * 1000,
@@ -46,7 +49,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 // );
 // app.use(helmet());
 app.use(cors({
-    origin:'http://localhost:3000',
+    origin:['https://vinswap.onrender.com', 'https://vinswap.lat/'],
     credentials: true
 }));
 // app.use(xss());
