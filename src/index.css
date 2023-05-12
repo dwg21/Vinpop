@@ -4,10 +4,6 @@
 
 @import url('https://fonts.google.com/specimen/IBM+Plex+Sans+Condensed?query=IBM+Plex+Sans');
 
-* {
-    font-family:'IBM Plex Sans Condensed';
-}
-
 body {
     font-family: 'IBM Plex Sans Condensed', sans-serif;
 

@@ -48,10 +48,24 @@ app.set('trust proxy', 1);
 //   })
 // );
 // app.use(helmet());
-app.use(cors({
-    origin: 'https://vinswap.lat/',
-    credentials: true
-}));
+
+
+
+app.use(
+  cors({
+    origin: 'https://vinswap.lat',
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
+app.options(
+  '*',
+  cors({
+    origin: true,
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 // app.use(xss());
 // app.use(mongoSanitize());
 
