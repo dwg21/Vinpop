@@ -17,10 +17,9 @@ const EditSection = () => {
         }
     }, [listings, dispatch]);
 
-    console.log(listingStatus)
 
 
-    if (listingStatus === 'suceeded') {
+    if (listings[0]._id) {
         
         return (
             <div>

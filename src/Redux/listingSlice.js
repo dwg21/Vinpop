@@ -25,7 +25,6 @@ export const fetchAllLisings = createAsyncThunk(
                 return response.data.Listings
                 
         } catch (error) {
-            state.status = 'failed'
             return error.message
         }
     }
