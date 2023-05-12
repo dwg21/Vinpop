@@ -17,16 +17,12 @@ const initialState = {
 
 export const fetchAllLisings = createAsyncThunk(
     'listing/fetchListings', async () => {
-        try {
             const response = await serverApi.get(
                 'api/v1/listing',
                 {headers: {'Content-Type': 'application/json'}}
                 )
                 return response.data.Listings
                 
-        } catch (error) {
-            return error.message
-        }
     }
 )
 
