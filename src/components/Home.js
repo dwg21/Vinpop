@@ -5,8 +5,7 @@ import bag from '../data/images/bag.jpeg';
 import homepic1 from '../data/images/findstyle.jpg';
 import homepic2 from '../data/images/homepagepic2.jpeg'
 
-import shirts from '../data/images/shirts.jpeg'
-import dresses from '../data/images/dresses.jpeg'
+
 import jewellery from '../data/images/jewellery.jpeg'
 
 import vintage from '../data/images/vintage.jpeg';
@@ -91,28 +90,28 @@ return (
             
             <EditSection/>
 
-            <div className='my-8 overflow-x-scroll'>
+            <div className='my-8 overflow-y-scroll'>
                 <p className='font-bold mb-3'>Top Searches</p>
                 <ul className=' space-x-4 flex overflow-y-scroll no-scroll-bar md:justify-center '>
-                    <li onClick={() => handleSearch('carhart')} >
-                        <img src = {carharrt} className='cursor-pointer  rounded-[50%] min-w-[120px] max-w-[200px] aspect-square object-cover	'/>
+                    <li onClick={() => handleSearch('carhart')}  >
+                        <img src = {carharrt} className='cursor-pointer  rounded-[50%] min-w-[120px] max-w-[200px] h-[200px] aspect-square object-cover	'/>
                         <p className=' text-center font-bold mt-2'>Carharrt</p>
                     </li>
-                    <li onClick={() => handleSearch('dickies')}>
-                        <img src = {dickies} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	'/>
+                    <li onClick={() => handleSearch('dickies')} >
+                        <img src = {dickies} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] h-[200px] aspect-square object-cover	'/>
                         <p className=' text-center font-bold mt-2'>Dickies</p>
                     </li>
                     <li onClick={() => handleSearch('levis')}>
-                        <img src = {levis} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	'/>
+                        <img src = {levis} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] h-[200px] aspect-square object-cover	'/>
                         <p className=' text-center font-bold mt-2'>Levis</p>
                     </li>
                     <li onClick={() => handleSearch('leather')}>
-                        <img src = {leather} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	'/>
+                        <img src = {leather} className='cursor-pointer  rounded-[50%] min-w-[120px]  max-w-[200px] h-[200px] aspect-square object-cover	'/>
                         <p className=' text-center font-bold mt-2'>Leather </p>
                     </li>
 
                     <li onClick={() => handleSearch('watch')}>
-                        <img src = {watch} className=' cursor-pointer rounded-[50%] min-w-[120px]  max-w-[200px] aspect-square object-cover	 '/>
+                        <img src = {watch} className=' cursor-pointer rounded-[50%] min-w-[120px]  max-w-[200px] h-[200px] aspect-square object-cover	 '/>
                         <p className=' text-center font-bold mt-2'>Watches</p>
                     </li>
                 </ul>
