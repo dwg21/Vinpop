@@ -129,11 +129,8 @@ return (
                 <span className='border-r-2 h-[40px]' />
                 { sortMenuActive &&
                 <ul className='border w-[200px] absolute z-20 font-light mt-3  '>
-                        <li onClick={() => handleSortChange('relevance')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'relevance' && 'font-semibold'}  `} >Relevance</li>
-                        <li onClick={() => handleSortChange('lth')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'lth' && 'font-semibold'}  `}>Price: low to high</li>
-                        <li onClick={() => handleSortChange('htl')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'htl' && 'font-semibold'}  `}>Price: high to low</li>
-                        <li onClick={() => handleSortChange('mp')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'mp' && 'font-semibold'}  `}>Most popular</li>
-                        <li onClick={() => handleSortChange('nw')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'nl' && 'font-semibold'}  `}>Newly Listed</li>
+                        <li onClick={() => handleSortChange('az')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'az' && 'font-semibold'}  `} >A to Z</li>
+                        <li onClick={() => handleSortChange('za')} className={`px-3 py-2 border-b-2 relative bg-white hover:bg-gray-200 cursor-pointer  ${sortActive === 'za' && 'font-semibold'}  `}>Z to A</li>
                     </ul>
 
                 }
@@ -214,7 +211,7 @@ return (
             
         </div>
 
-        <ProductGrid filters = {filters} setFilters = {setFilters} />
+        <ProductGrid filters = {filters} setFilters = {setFilters} sort = {sortActive} />
 
 
 

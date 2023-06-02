@@ -48,19 +48,19 @@ return (
         <div className='p-5 flex flex-col lg:max-w-[75%] '>
             <div className='flex flex-col overflow-x-scroll mb-8 mt-4 no-scroll-bar '>
                 <ul className='flex mt-5 min-w-[900px]'>
-                    <li className=' ml-auto mr-4 border-black border-2 px-4 py-2'>Puma Bags & Purses</li>
-                    <li className='mr-4 border-black border-2 px-4 py-2'>Calvin Klein Boots</li>
-                    <li className='mr-4 border-black border-2 px-4 py-2'>Mens Loafers</li>
-                    <li className='mr-4 border-black border-2 px-4 py-2'>Nike Vests</li>
-                    <li className='mr-auto border-black border-2 px-4 py-2'>Givency Slides</li>
+                    <li onClick={() => handleSearch('watch')} className=' ml-auto mr-4 border-black border-2 px-4 py-2'>Watches</li>
+                    <li onClick={() => handleSearch('nike')} className='mr-4 border-black border-2 px-4 py-2'>Nike</li>
+                    <li onClick={() => handleSearch('dickies')} className='mr-4 border-black border-2 px-4 py-2'>Dickies</li>
+                    <li onClick={() => handleSearch('Carhart')}  className='mr-4 border-black border-2 px-4 py-2'>Carharrt</li>
+                    <li onClick={() => handleSearch('Leather')}className='mr-auto border-black border-2 px-4 py-2'>Leather Jackets</li>
                 </ul>
 
                 <ul className='flex mt-5  min-w-[900px]'>
-                    <li className=' ml-auto mr-4 border-black border-2 px-4 py-2'>Zara Hoodies</li>
-                    <li className='mr-4 border-black border-2 px-4 py-2'>Vinatge Shirts</li>
-                    <li className='mr-4 border-black border-2 px-4 py-2'>Yeezy</li>
-                    <li className='mr-4 border-black border-2 px-4 py-2'>Urban Orginal Bottoms</li>
-                    <li className='mr-auto border-black border-2 px-4 py-2'>17London Jumpers</li>
+                    <li onClick={() => handleSearch('vintage')}className=' ml-auto mr-4 border-black border-2 px-4 py-2'>Vintage</li>
+                    <li onClick={() => handleSearch('leather')} className='mr-4 border-black border-2 px-4 py-2'>Sports Wear</li>
+                    <li onClick={() => handleSearch('glasses')} className='mr-4 border-black border-2 px-4 py-2'>Sun Glasses</li>
+                    <li onClick={() => handleSearch('jeans')} className='mr-4 border-black border-2 px-4 py-2'>Jeans</li>
+                    <li  onClick={() => handleSearch('necklace')}  className='mr-auto border-black border-2 px-4 py-2'>Necklaces</li>
                 </ul>
                 
             </div>

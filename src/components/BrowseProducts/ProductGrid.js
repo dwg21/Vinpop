@@ -13,7 +13,7 @@ import {getuserFavorites} from '../../Redux/favoriteSlice';
 
 
 
-const ProductGrid = ({filters, setFilters}) => {   
+const ProductGrid = ({filters, setFilters, sortActive}) => {   
     const dispatch = useDispatch();
     const {param} = useParams();
     const listings = useSelector(selectAllListings);
@@ -159,6 +159,22 @@ const ProductGrid = ({filters, setFilters}) => {
         } 
 
     }
+    if (sortActive = 'az') {
+        FilteredResults.sort(function(a, b){
+            if(a.title < b.title) { return -1; }
+            if(a.title > b.title) { return 1; }
+            return 0;
+        })
+    }
+
+    if (sortActive = 'za') {
+        FilteredResults.sort(function(a, b){
+            if(a.title < b.title) { return 1; }
+            if(a.title > b.title) { return -1; }
+            return 0;
+        })
+    }
+    
 
 
 
