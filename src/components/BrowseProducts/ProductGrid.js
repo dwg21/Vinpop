@@ -159,8 +159,12 @@ const ProductGrid = ({filters, setFilters, sortActive}) => {
         } 
 
     }
+
+    const sortedAndFilteredItems = [...FilteredResults]
+
+
     if (sortActive = 'az') {
-        FilteredResults.sort(function(a, b){
+        sortedAndFilteredItems.sort(function(a, b){
             if(a.title < b.title) { return -1; }
             if(a.title > b.title) { return 1; }
             return 0;
@@ -168,7 +172,7 @@ const ProductGrid = ({filters, setFilters, sortActive}) => {
     }
 
     if (sortActive = 'za') {
-        FilteredResults.sort(function(a, b){
+        sortedAndFilteredItems.sort(function(a, b){
             if(a.title < b.title) { return 1; }
             if(a.title > b.title) { return -1; }
             return 0;
@@ -186,7 +190,7 @@ const ProductGrid = ({filters, setFilters, sortActive}) => {
     if (listingStatus === 'loading') {
         content = <p>Loading...</p>
     } else if (listingStatus === 'suceeded' && listings) {
-        content =  FilteredResults.map((item, index) => (
+        content =  sortedAndFilteredItems.map((item, index) => (
             <GridImage 
                 item={item}
                 index = {index}
