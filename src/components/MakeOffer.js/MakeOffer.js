@@ -9,7 +9,7 @@ import ServerApi from '../../serverApi/axios';
 
 const MakeOffer = () => {
     const params = useParams();
-    const naviagte = useNavigate();
+    const navigate = useNavigate();
     const {id} = params;
     const dispatch = useDispatch();
     const userListings = useSelector(selectUserListings);
@@ -54,7 +54,7 @@ const MakeOffer = () => {
                 offer,
                 {headers: {'Content-Type': 'application/json'}}
             )
-            naviagte('/');
+            navigate('/offers');
             window.location.reload(false);
 
 
